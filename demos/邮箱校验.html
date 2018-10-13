@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var re = /^\w+@[0-9a-z]+\.[a-z]+/i;
+            var oIp = document.getElementsByTagName("input")[0];
+            var oP = document.getElementsByTagName("p")[0];
+            var text = ""
+            oIp.onblur = function(){
+                if(re.test(oIp.value)){
+                    text = "你居然能写对！<br>"
+                }else if(oIp.value == ""){
+                    text = ""
+                }else{
+                    text = "傻逼，这是邮箱吗？<br>"
+                }
+                oP.innerHTML += text 
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text">
+    <p></p>
+</body>
+</html>

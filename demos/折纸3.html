@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            margin: 50px auto;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .box div {
+            width: 500px;
+            height: 80px;
+            text-align: center;
+            background: #d3f0f0;
+            border: 1px solid #ccc;
+            line-height: 80px;
+            transform-style: preserve-3d;
+            position: absolute;
+            top: 82px;
+            transform-origin: top;
+            transform: rotateX(-120deg)
+        }
+
+        h2 {
+            margin: 0;
+            width: 500px;
+            height: 80px;
+            text-align: center;
+            background: #d3f0f0;
+            border: 1px solid #ccc;
+            line-height: 80px;
+            position: absolute;
+            top: 0;
+            z-index: 2;
+        }
+
+        @keyframes open {
+            0% {
+                transform: rotateX(-120deg)
+            }
+            100% {
+                transform: rotateX(0deg)
+            }
+        }
+
+        @keyframes clocse {
+            0% {
+                transform: rotateX(0deg)
+            }
+
+            100% {
+                transform: rotateX(-120deg)
+            }
+
+        }
+
+        .box span {
+            display: block;
+            height: 80px;
+            transition: 1s;
+            box-shadow: 0 0 0 80px rgba(0, 0, 0, 1) inset;
+        }
+
+        .box .show {
+            animation: open 0.5s;
+            transform: rotateX(0deg)
+        }
+
+        .box .show>span {
+            box-shadow: 0 0 0 80px rgba(0, 0, 0, 0) inset;
+        }
+
+        .box .hide {
+            animation: clocse 0.5s;
+            transform: rotateX(-120deg)
+        }
+    </style>
+</head>
+
+<body>
+    <button>开始</button>
+    <div class="box">
+        <h2>1</h2>
+        <div>
+            <span>2</span>
+            <div>
+                <span>3</span>
+                <div>
+                    <span>4</span>
+                    <div>
+                        <span>5</span>
+                        <div>
+                            <span>6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        var oBtn = document.getElementsByTagName('button')[0];
+        var oBox = document.getElementsByClassName('box')[0];
+        var aDiv = oBox.getElementsByTagName('div');
+        var off = true;
+        var timer = null;
+        var i = 0;
+        oBtn.onclick = function () {
+            if (timer) {
+                return;
+            }
+            if (off) {
+                i = 0;
+                timer = setInterval(function () {
+                    if (i == aDiv.length-1) {
+                        clearInterval(timer);
+                        timer = null;
+                    }
+                    aDiv[i].className = 'show';
+                    i++;
+                }, 200)
+            } else {
+                i = aDiv.length - 1;
+                timer = setInterval(function () {
+                    if (i == - 1) {
+                        clearInterval(timer);
+                        i = 0;
+                        timer = null;
+                    }
+                    aDiv[i].className = 'hide';
+                    i--;
+                }, 200)
+            }
+            off = !off;
+        }
+    </script>
+</body>
+
+</html>

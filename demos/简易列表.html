@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			/*-------------------------------------------reset---------------------------------------*/
+			
+			h2,
+			ol,
+			ul,
+			li {
+				margin: 0;
+			}
+			
+			ol,
+			ul {
+				list-style: none;
+				padding: 0;
+			}
+			/*------------------------------------------style-----------------------------------------*/
+			
+			.box {
+				width: 320px;
+				margin: 50px auto;
+				background: red;
+				border: 1px solid #000;
+			}
+			
+			.box h2 {
+				height: 40px;
+				font: 700 16px/40px "微软雅黑";
+				text-align: center;
+				color: #fff
+			}
+			
+			ol {
+				height: 20px;
+				font-size: 0;
+				text-align: center;
+				border-bottom: 1px solid #fff;
+			}
+			
+			ol li {
+				display: inline-block;
+				margin: 0 10px;
+				padding: 0 10px;
+				height: 20px;
+				font: 14px/20px "微软雅黑";
+				text-align: center;
+				background: #c0c0c0;
+				cursor: pointer;
+			}
+			
+			ul {
+				height: 340px;
+				background: #fff;
+				display: none;
+			}
+			
+			ul:nth-of-type(1) {
+				display: block;
+			}
+			
+			ul li {
+				height: 40px;
+				font: 14px/40px "微软雅黑";
+				border-bottom: 1px dashed #000;
+				cursor: pointer;
+				position: relative;
+			}
+			
+			ul li strong {
+				font-weight: normal;
+				display: inline-block;
+				margin: 10px;
+				width: 20px;
+				height: 20px;
+				background: red;
+				color: #fff;
+				text-align: center;
+				border-radius: 50%;
+				line-height: 20px;
+				float: left;
+			}
+			
+			.foot {
+				height: 30px;
+			}
+			
+			.foot a {
+				float: right;
+				font: 14px/30px "微软雅黑";
+				color: #fff;
+				margin-right: 10px;
+				text-decoration: none;
+			}
+			
+			.box .active {
+				height: 80px;
+				background: #ccc;
+			}
+			
+			ul img {
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+				vertical-align: top;
+				float: left;
+			}
+			
+			ul em {
+				float: left;
+				font-style: normal;
+				line-height: 40px;
+				margin: 10px;
+			}
+			
+			ul input {
+				padding: 5px 10px;
+				position: absolute;
+				right: 10px;
+				bottom: 10px;
+				background: red;
+				border: none;
+			}
+			
+			ul li span:nth-of-type(2) {
+				display: none;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oBox = document.getElementsByClassName('box')[0];
+				var oOl = oBox.getElementsByTagName('ol')[0];
+				var aOLi = oOl.getElementsByTagName('li');
+				var aTab = oBox.getElementsByTagName('ul');
+				for(var i = 0; i < aOLi.length; i++) {
+					console.log(aOLi[i])
+					aOLi[i].index = i;
+					aOLi[i].onmouseenter = function() {
+						for(var i = 0; i < aOLi.length; i++) {
+							aOLi[i].style.background = '#C0C0C0';
+							aTab[i].style.display = 'none'
+						}
+						this.style.background = '#fff';
+						aTab[this.index].style.display = 'block'
+					}
+					changeTab(i)
+				}
+				function changeTab(num) {
+					var aLi = aTab[num].getElementsByTagName('li');
+					var aSpan = aTab[num].getElementsByTagName('span');
+					for(var i = 0; i < aLi.length; i++) {
+						aLi[i].index = i;
+						aLi[i].onmouseenter = function() {
+							for(var i = 0; i < aLi.length; i++) {
+								aLi[i].className = '';
+								aSpan[2 * i].style.display = 'block';
+								aSpan[2 * i + 1].style.display = 'none'
+							}
+							this.className = 'active';
+							aSpan[2 * this.index].style.display = 'none';
+							aSpan[2 * this.index + 1].style.display = 'block'
+						}
+					}
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="box">
+			<h2>软件排行榜</h2>
+			<ol>
+				<li>每日</li>
+				<li>每周</li>
+				<li>每月</li>
+			</ol>
+			<ul>
+				<li><strong>1</strong><span>暴雨毕业照走红</span><span><img src="img/11.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>2</strong><span>厄齐尔与球迷冲突</span><span><img src="img/12.gif"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>3</strong><span>阿里云出现故障</span><span><img src="img/13.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>4</strong><span>纳吉布被抄18亿</span><span><img src="img/14.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>5</strong><span>韩国对阵德国</span><span><img src="img/15.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>6</strong><span>陈伟霆晒父母旧照</span><span><img src="img/16.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>7</strong><span>汤普森中国行冲突</span><span><img src="img/17.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+			</ul>
+			<ul>
+				<li><strong>1</strong><span>暴雨毕业照走红</span><span><img src="img/11.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>2</strong><span>阿里云出现故障</span><span><img src="img/13.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>3</strong><span>纳吉布被抄18亿</span><span><img src="img/14.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>4</strong><span>韩国对阵德国</span><span><img src="img/15.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>5</strong><span>陈伟霆晒父母旧照</span><span><img src="img/16.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>6</strong><span>汤普森中国行冲突</span><span><img src="img/17.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+			</ul>
+			<ul>
+				<li><strong>1</strong><span>暴雨毕业照走红</span><span><img src="img/11.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>2</strong><span>厄齐尔与球迷冲突</span><span><img src="img/12.gif"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>3</strong><span>阿里云出现故障</span><span><img src="img/13.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+				<li><strong>4</strong><span>纳吉布被抄18亿</span><span><img src="img/14.jpg"/><em>这支零散的韩国队赢战车</em><input type="button" name="" id="" value="详情" /></span></li>
+			</ul>
+			<div class="foot">
+				<a href="javaScript:;">更多</a>
+			</div>
+		</div>
+	</body>
+
+</html>

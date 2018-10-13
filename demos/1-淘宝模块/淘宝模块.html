@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			img {
+				border: none;
+				vertical-align: top;
+			}
+			
+			.wrap {
+				margin: 100px auto;
+				width: 362px;
+				height: 202px;
+				border: 1px solid #f60;
+			}
+			
+			ul,
+			img {
+				float: left;
+			}
+			
+			li {
+				width: 80px;
+				font: 14px/28px "微软雅黑";
+				text-align: center;
+				cursor: pointer;
+				border-bottom: 1px solid #f60;
+				background: -webkit-linear-gradient(#fee 0%, #ffe 20%, #ffe 80%, #fee 100%);
+			}
+			
+			.hover {
+				color: #eee;
+				background: -webkit-linear-gradient(#fe0 0%, #f50 20%, #f50 80%, #fe0 100%);
+			}
+			
+			ul li:nth-last-of-type(1) {
+				border-bottom: none;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var json = {
+					left: ['img/1.jpg', 'img/2.jpg', 'img/3.jpg', 'img/4.jpg', 'img/5.jpg', 'img/6.jpg', 'img/7.jpg'],
+					right: ['img/8.jpg', 'img/9.jpg', 'img/10.jpg', 'img/11.jpg', 'img/12.jpg', 'img/13.jpg', 'img/14.jpg']
+				};
+				var oWrap = document.getElementsByClassName('wrap')[0];
+				var oLeft = oWrap.getElementsByClassName('left')[0];
+				var oRight = oWrap.getElementsByClassName('right')[0];
+				var oImg = oWrap.getElementsByTagName('img')[0];
+				var aLLi = oLeft.getElementsByTagName('li');
+				var aRLi = oRight.getElementsByTagName('li');
+				var num = 0;
+				for(var i = 0; i < aLLi.length; i++) {
+					aLLi[i].index = i;
+					aRLi[i].index = i;
+					aLLi[i].onmouseenter = function() {
+						hovers(aLLi, this.index, json.left[this.index]);
+					}
+					aRLi[i].onmouseenter = function() {
+						hovers(aRLi, this.index, json.right[this.index]);
+					}
+
+					function hovers(obj, index, val) {
+						for(var i = 0; i < obj.length; i++) {
+							obj[i].className = '';
+						};
+						obj[index].className = 'hover';
+						oImg.src = val;
+					};
+				};
+				var timer = ''
+				var lLi = Array.from(aLLi);
+				var rLi = Array.from(aRLi);
+				function autochange() {
+					timer = setInterval(function() {
+						hovers(lLi.concat(rLi), num % (lLi.concat(rLi).length), json.left.concat(json.right)[num % (json.left.concat(json.right).length)]);
+						num++;
+					}, 3000)
+				}
+				autochange();
+				oWrap.onmouseenter = function(){
+					clearInterval(timer)
+				}
+				oWrap.onmouseleave = function(){
+					autochange();
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<ul class="left">
+				<li>连衣裙</li>
+				<li>雪纺</li>
+				<li>T恤</li>
+				<li>铅笔裤</li>
+				<li>婚纱</li>
+				<li>外套</li>
+				<li>连体裤</li>
+			</ul>
+			<img src="img/loader_ico.gif" width="200px" height="200px" />
+			<ul class="right">
+				<li>包包</li>
+				<li>凉鞋</li>
+				<li>单鞋</li>
+				<li>太阳镜</li>
+				<li>丝袜</li>
+				<li>帆布鞋</li>
+				<li>情侣装</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

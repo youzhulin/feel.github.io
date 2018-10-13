@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        input {
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: none;
+        }
+        /* -------------------- */
+        #box {
+            width: 312px;
+            margin: 100px auto;
+            /* background: pink; */
+        }
+        #box li {
+            height: 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #fff;
+            font-size: 0;
+            padding-left: 16px;
+            /* background: pink; */
+        }
+        #box li input {
+            margin-right: 16px;
+        }
+        #box li span,
+        #box li em {
+            font-size: 14px;
+        }
+        #box li span {
+            width: 160px;
+            display: inline-block;
+        }
+        #box li em {
+            font-style: normal;
+        }
+        form {
+            height: 32px;
+            background: url(img/2_btm_bg.png);
+            padding-left: 16px;
+            line-height: 32px;
+            font-size: 0;
+            border-bottom: 2px solid #ccc;
+        }
+        form span {
+            font-size: 14px;
+            margin: 0 16px;
+        }
+        .btn {
+            width: 65px;
+            height: 25px;
+            border: 1px solid #c0c0c0;
+            border-radius: 6px;
+            margin-right: 4px;
+            font-size: 14px;
+            text-indent: 1em;
+        }
+        .collect {
+            background: url(img/2_collect.png) no-repeat 6px 7px;
+        }
+        .add {
+            background: url(img/2_add.png) no-repeat 6px 7px;
+        }
+        .del {
+            background: url(img/2_delete.png) no-repeat 6px 7px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var oUl = oBox.getElementsByTagName('ul')[0];
+            var aLi = oUl.getElementsByTagName('li');
+            var aInp = oUl.getElementsByTagName('input');
+            var oForm = oBox.getElementsByTagName('form')[0];
+            var aBtn = oForm.getElementsByTagName('input');
+            var arrColor = ['#fff','#e4ffff'];
+
+            for(var i=0; i<aLi.length; i++) {
+                // 给li设置隔行变色
+                aLi[i].style.background = arrColor[i%arrColor.length];
+
+                aLi[i].index = i;
+                // 给li设置鼠标移入
+                aLi[i].onmouseover = function () {
+                    this.style.background = '#ccc';
+                };
+                // 移出
+                aLi[i].onmouseout = function () {
+                    this.style.background = arrColor[this.index%arrColor.length];
+                    // if(aInp[this.index].checked) {
+                    //     this.style.background = '#ccc';
+                    // }
+                };
+
+                // 全选
+                aBtn[0].onclick = function () {
+                    if (this.checked) {  //如果全选按钮被选中则，ul中的所有input全部被选中
+                        for (var i=0; i<aLi.length; i++) {
+                            aInp[i].checked = true;
+                        }
+                    } else {
+                        for (var i=0; i<aLi.length; i++) {
+                            aInp[i].checked = false;
+                        }
+                    }
+                };
+
+                // 如果ul中的所有input被选中，则全选按钮选中
+                aInp[i].index = i;
+                aInp[i].onclick = function () {
+                    if (!this.checked) {  //如果input没被选中就会进入这个判断
+                        aBtn[0].checked = false;  // 如果我没被选择那就不能全选
+                    } else {
+                        // aLi[this.index].style.background = '#ccc';
+                        var onOff = true; //定义一个开关
+                        for (var i=0; i<aInp.length; i++) {
+                            if (!aInp[i].checked) {
+                                onOff = false;
+                            }
+                        }
+                        if (onOff) {
+                            aBtn[0].checked = true;  
+                        }
+                    }
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li>
+                <input type="checkbox">
+                <span>私奔</span>
+                <em>梁博</em>
+            </li>
+            <li>
+                <input type="checkbox">
+                <span>私奔</span>
+                <em>梁博</em>
+            </li>
+            <li>
+                <input type="checkbox">
+                <span>私奔</span>
+                <em>梁博</em>
+            </li>
+            <li>
+                <input type="checkbox">
+                <span>私奔</span>
+                <em>梁博</em>
+            </li>
+            <li>
+                <input type="checkbox">
+                <span>私奔</span>
+                <em>梁博</em>
+            </li>
+            <li>
+                <input type="checkbox">
+                <span>私奔</span>
+                <em>梁博</em>
+            </li>
+        </ul>
+        <form action="">
+            <input type="checkbox">
+            <span>全选</span>
+            <input class="btn collect" type="button" value="收藏">
+            <input class="btn add" type="button" value="添加">
+            <input class="btn del" type="button" value="删除">
+        </form>
+    </div>
+</body>
+</html>

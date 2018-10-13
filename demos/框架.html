@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: #f0f;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+         function getStyle(obj, name) {
+            if (obj.currentStyle) {
+                return obj.currentStyle[name];
+            } else {
+                return getComputedStyle(obj, false)[name]
+            }
+        }
+        function changeWidth(obj, itarget) {
+            //每次运行该函数时关闭该元素身上的定时器
+            clearInterval(obj.timer);
+            //为每个元素定义一个定时器
+            // console.log(curr)
+            console.log(obj.offsetWidth)
+            obj.timer = setInterval(function () {
+                var curr = parseInt(getStyle(obj, 'width')) 
+                //定义一个变速度
+                var speed = (itarget - curr) / 6;
+                //速度取整
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                //当元素宽度等于目标宽度时
+                if (curr == itarget) {
+                    //清除该元素身上的定时器
+                    clearInterval(obj.timer);
+                } else {
+                    //否则让他继续变向目标宽度
+                    obj.style.width = curr + speed + "px";
+                }
+            }, 30)
+        }
+        window.onload = function(){
+            var aDiv = document.getElementsByTagName("div");
+            for(var i= 0;i<aDiv.length;i++){
+                //为每个元素定义一个定时器
+                aDiv[i].timer = null;
+                //鼠标移入
+                aDiv[i].onmouseover = function(){
+                    changeWidth(this,400)
+                }
+                //鼠标移出
+                aDiv[i].onmouseout = function(){
+                    changeWidth(this,100)
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

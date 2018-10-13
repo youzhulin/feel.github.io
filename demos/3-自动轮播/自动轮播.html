@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,p,li,h3{
+				margin: 0;
+			}
+			ul{
+				list-style: none;
+				padding: 0;
+			}
+			img{
+				border: none;
+				vertical-align: top;
+			}
+			.wrap{
+				width: 500px;
+				height: 300px;
+				margin: 100px auto;
+				border: 1px solid #fff;
+				position: relative;
+				overflow: hidden;
+			}
+			.wrap ul{
+				width: 7000px;
+				height: 300px;
+				position: absolute;
+				left: 0;
+			}
+			img{
+				width: 500px;
+				height: 300px;
+			}
+			ul li{
+				float: left;
+			}
+			.imginfo{
+				position: absolute;
+				bottom: 0;
+				z-index: 1;
+				padding: 10px;
+				background: rgba(0,0,0,0.3);
+				color: #fff;
+				width: 480px;
+				height: 80px;
+				overflow: hidden;
+			}
+			.imginfo p{
+				font-size: 14px;
+				line-height: 20px;
+			}
+		</style>
+		<script src="js/move1.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oWrap = document.getElementsByClassName('wrap')[0];
+				var oUl = oWrap.getElementsByTagName('ul')[0];
+				var oULi = oUl.getElementsByTagName('li')
+				var oImgInfo = oWrap.getElementsByClassName('imginfo')[0];
+				var num = 0;
+				var arrText1 = ['月亮镇','苏牡丹','牡丹亭','维嘉娜','霍尔圣斯','露晨凉','朱梓源'];
+				var arrText2 = ['这或许是图片描述，写点啥呢，随便了，今天天气好像不是很好，空调冷死了',
+				'第一张图都不知道写啥，这张写点啥呢？让我想想，算了，就不写了，下张再说吧',
+				'、、、好吧，车到山前必有路，有路丰田刹不住，这样应该可以吧，算了，就这样了',
+				'哎呀，不好意思，上张图片描述黑了把丰田，该不会找我要精神损失费吧',
+				'咳，管他呢？谁让你出丑闻的，怨不得我，啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦',
+				'好吧，有点贱！可是就这样啊，想咋的？哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈',
+				'这是随后一张图了，这个应该可以算是图片描述吧，就这样，舒口气，累~~~~~~'];
+				setTimeout(function(){setStyle(oImgInfo,'bottom',-100,10);},4500);
+				var timer1 = setInterval(function(){
+					num++;
+					if(num%oULi.length == 0){
+						oUl.style.left = 0;
+					}else{
+						setStyle(oUl,'left',(-num%oULi.length)*500,20);
+						if(num%oULi.length == oULi.length-1){
+							oImgInfo.innerHTML = '<h3>《'+arrText1[0]+'》</h3>'+'<p>'+arrText2[0]+'</p>';
+						}else{
+							oImgInfo.innerHTML = '<h3>《'+arrText1[num%oULi.length]+'》</h3>'+'<p>'+arrText2[num%oULi.length]+'</p>';
+						}
+					}
+					setTimeout(function(){setStyle(oImgInfo,'bottom',0,10);},1000)
+					if(num%oULi.length == oULi.length-1){
+						setTimeout(function(){setStyle(oImgInfo,'bottom',-100,10);},6000);
+					}else{
+						setTimeout(function(){setStyle(oImgInfo,'bottom',-100,10);},4500);
+					}
+				},5000);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul>
+				<li><a href="javaScript:;"><img src="imgs/629_1.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_2.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_3.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_4.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_5.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_6.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_7.jpg"/></a></li>
+				<li><a href="javaScript:;"><img src="imgs/629_1.jpg"/></a></li>
+			</ul>
+			<div class="imginfo">
+				<h3>《月亮镇》</h3>
+				<p>这或许是图片描述，写点啥呢，随便了，今天天气好像不是很好，空调冷死了</p>
+			</div>
+		</div>
+	</body>
+</html>

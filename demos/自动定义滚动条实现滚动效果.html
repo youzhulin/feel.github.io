@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .line{
+        width: 500px;
+        height: 20px;
+        background: #ccc;
+        position: relative;
+    }
+    .btn{
+        width: 20px;
+        height: 20px;
+        background:#00f;
+        position: absolute;
+    }
+    .change{
+        width: 500px;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+   .text{
+       position: absolute;
+       top: 0;
+   }
+</style>
+<script>
+    window.onload = function(){
+        var oLine = document.getElementsByClassName("line")[0];
+        var oBtn = document.getElementsByClassName("btn")[0];
+        var ochange = document.getElementsByClassName("change")[0]; 
+        var otext = document.getElementsByClassName("text")[0];        
+        function mouseMove(ev){
+            var oEvent = ev||event;
+            var L = oEvent.clientX - X ;
+            if(L<0){
+                L = 0
+            }else if(L > oLine.offsetWidth - oBtn.offsetWidth){
+                L = oLine.offsetWidth - oBtn.offsetWidth;
+            }
+            oBtn.style.left = L +"px";
+            var prop =L/(oLine.offsetWidth - oBtn.offsetWidth);
+            otext.style.top = -(otext.offsetHeight - ochange.offsetHeight)*prop + "px";
+        }
+        function mouseUp(){
+            this.onmouseup = "";
+            this.onmousemove = "";
+            if(oBtn.releaseCapture){
+                oBtn.releaseCapture();
+            }
+            return false
+        }
+        oBtn.onmousedown = function(ev){
+            var oEvent = ev||event;
+            X = oEvent.clientX - oBtn.offsetLeft;
+            Y = oEvent.clientY - oBtn.offsetLeft;
+            if(oBtn.setCapture){
+                oBtn.onmousemove = mouseMove;
+                oBtn.onmouseup = mouseUp;
+            }else{
+                document.onmousemove = mouseMove;
+                document.onmouseup = mouseUp;
+            }
+        }
+    }
+</script>
+<body>
+    <div class="line">
+        <div class="btn"></div>
+    </div>
+    <div class="change">
+        <div class="text">
+                解说：在杨冰阳的情感理念中，伴侣价值就是女性的外在条件，例如身高、外貌、体重以及性格，她认为女性要温柔乖巧，讨男性喜欢，而亲子不确定性则是指男性担心孩子是否是自己的，所以女性要降低这个不确定性，才能换来男人的信任和投资。在她的这套理论中，每个女性都可以根据这两个概念打分，分数高低则影响感情幸福程度。
+
+                沈奕斐（复旦大学社会学系副教授）：阿呀娃娃的这些所谓的理论，包括什么MV值PU值等等，你会发现她不断要求女性做自我矮化，我们在学术里叫自我矮化，就是把自己非常地放低地位。但是实际上她自己是不是真这么做的，我们有一个好朋友，她就跟杨冰阳一起参加了一场活动，她回来以后告诉我们说，杨冰阳绝对是个女强人，她的丈夫其实是她的助手，丈夫是帮她打杂的，她真正的家庭生活跟她所表现出来的状态完全是两回事。
+                
+                杨冰阳：为什么穿红裙子，在场的有知道的吗？不要露胸，遮住你的胖胖的胳膊。
+                
+                解说：虽然漏洞百出，饱受诟病，但杨冰阳的理论依然吸引了300万粉丝，一些推出的恋爱课程被不少粉丝奉为经典，她本人也在3家公司入股，涉及情感咨询、管理和化妆品。除此之外，她还开始学习微商的操作方式，运用粉丝销售一些产品。
+                
+                陈亚亚：所以我们可以看到，就是阿呀娃娃的话，她的整体背后的逻辑是利用女性想要一个好的婚姻，她对自己的现状感到焦虑，所以她们需要有人来帮助她，然后阿呀娃娃给她们输出一整套情感模式、情感咨询对吧。情感模式里面提到女性要提升自己的伴侣价值，伴侣价值分为两块，一块是你要改变自己的性格，还有一块就是你的外形，外形的话一个就是要去打扮，去买她的东画彩妆，还有一个就是你要内在的美，你的皮肤要变好了，你又得吃她的这个优弹素。
+                
+                解说：在反对者的观点中，杨冰阳和背后的资本正是利用了这种现实中的焦虑，以达到赚取财富的目的，这种焦虑部分来自于传统婚姻观念，部分来自于女性所面对的社会现实。根据全国妇联和国家统计局2000年和2010年组织的中国妇女社会地位调查显示，认同女人干的好不如嫁的好的人数，十年间从33.6%上升到48%，而从工资上看，1990年城镇工作女性的收入水平占男性收入水平的77.5%，然后一直下降，到2010年降低10个百分点，只有男性的67.3%。
+                
+                沈奕斐：那么为什么阿呀娃娃市场这么大？为什么这些女性如此焦虑？你会发现今天我们很多社会福利机构其实还不够完善，社会支持体系也不够完善。当一个个体碰到问题的时候，你会发现家庭依然是她最后抵御风险的堡垒。而对于大量女性来讲，你没有这样的经济条件，你没有这样的社会资源，必然会产生对于未来生活的恐慌。
+                
+                解说：矮化女性，把婚姻和性别物质化。杨冰阳之所以能够通过这种方式成为情感教主，并从中谋利，实际上正是利用了现实的焦虑和漏洞。试想一下，如果她没有说出触及底线的话，是否还会遭到禁言，是否还会有更多人被她的理论带偏？
+        </div>
+    </div>
+</body>
+</html>

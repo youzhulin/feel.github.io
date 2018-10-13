@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 500px;
+				padding: 10px;
+				border: 1px solid #000000;
+				position: relative;
+				background: #0FF0F0;
+				margin: 50px auto;
+			}
+			
+			.text {
+				width: 460px;
+				padding: 10px;
+				border: 1px solid #000000;
+				margin-bottom: 10px;
+				background: #F0F0FF;
+			}
+			
+			ul,
+			li,
+			dl,
+			dt,
+			dd {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.nav {
+				overflow: hidden;
+				border-bottom: 5px solid #000000;
+				margin-bottom: 10px;
+			}
+			
+			.nav li {
+				float: left;
+				padding: 2px 10px;
+				cursor: pointer;
+			}
+			
+			.nav li:nth-of-type(3) {
+				float: right;
+			}
+			
+			.activ {
+				background: #000000;
+				color: #fff;
+			}
+			
+			dl {
+				display: inline-block;
+				border: 1px solid #000000;
+				margin-bottom: 10px;
+				position: absolute;
+				right: -80px;
+				top: 0;
+				background: #F0F4F4;
+			}
+			dl dd {
+				display: none;
+			}
+			dd,dt{
+				padding: 0px 20px;
+				font: 14px/30px "微软雅黑";
+				cursor: pointer;
+			}
+			dd:hover,dt:hover{
+				background: #F00FFF;
+			}
+			.sec {
+				display: none;
+			}
+			
+			.con li:nth-of-type(2) {
+				display: none;
+			}
+			
+			span {
+				background: #c00;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				//寻找元素
+				var oNav = document.getElementsByClassName('nav')[0];
+				var navLi = oNav.getElementsByTagName('li');
+				var oCon = document.getElementsByClassName('con')[0];
+				var conLi = oCon.getElementsByTagName('li');
+				var oDl = document.getElementsByTagName('dl')[0];
+				var dlDt = oDl.getElementsByTagName('dt')[0];
+				var dlDd = oDl.getElementsByTagName('dd');
+				var oSec = document.getElementsByClassName('sec')[0];
+				var aBtn = oCon.getElementsByTagName('button');
+				var aInp = oCon.getElementsByTagName('input');
+				var oText = document.getElementsByClassName('text')[0];
+				//声明必要的变量
+				var val = '';
+				var reVal = '';
+				var k = 0;
+				//展开按钮注册点击事件
+				dlDt.onclick = function() {
+					//循环dlDd的长度以便为与之数量对应的元素注册事件
+					for(var i = 0; i < dlDd.length; i++) {
+						//为将要发生事件的元素注册自定义属性，以便后期控制与之相对的元素
+						dlDd[i].index = i;
+						aBtn[i].index = i;
+						navLi[i].index = i;
+						//根据点击时dlDd的显示状况，确定点击后的dlDd显示状态
+						if(dlDd[i].style.display == 'block') {
+							dlDd[i].style.display = 'none';
+							dlDt.innerHTML = '展开'
+						} else {
+							dlDd[i].style.display = 'block';
+							dlDt.innerHTML = '收起'
+						}
+						//当navLi鼠标移入或dlDd被点击时执行tab函数
+						navLi[i].onmouseenter = dlDd[i].onclick = function() {
+							tab(this.index)
+						}
+						//定义tab函数：确定下方查找替换框部分的显示状态
+						function tab(index) {
+							oSec.style.display = 'block';
+							for(var j = 0; j < navLi.length - 1; j++) {
+								conLi[j].style.display = 'none';
+								navLi[j].className = '';
+								dlDd[j].style.display = 'none'
+							}
+							navLi[index].className = 'activ'
+							conLi[index].style.display = 'block'
+						}
+						//查找替换功能
+						aBtn[i].onclick = findReplace;
+						function findReplace(num1,num2) {
+							//点击查找替换按钮，先清除上一次添加的span标签
+							var reads = oText.innerHTML.split('<span>').join('').split('</span>').join('');
+							//根据点击的是哪个按钮，确定放入页面的是查找后的结果还是替换后的结果
+							if(this.index == 0) {
+								val = aInp[0].value;
+								reVal = val
+							} else if(this.index == 1){
+								val = aInp[1].value;
+								reVal = aInp[2].value
+							}
+							//当没有找到要查找的内容或未输入查找的内容时给用户相应的提示
+							if(oText.innerHTML.indexOf(val) == -1){
+								alert('没有你需要查找的内容！')
+							}
+							if(val.length == 0) {
+								alert('请输入你要查找的内容！');
+								return;
+							}
+							//将查找或替换后的结果返回到页面当中
+							oText.innerHTML = reads.split(val).join('<span>' + reVal + '</span>');
+							for( var i = 0 ; i < aInp.length ; i++){
+								aInp[i].value = '';
+							}
+						}
+					}
+				}
+				//点击查找框上面的小“×”，隐藏查找框
+				navLi[2].onclick = function() {
+					oSec.style.display = 'none';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="text">
+				5年来，共青团坚决贯彻党中央要求，牢牢把握保持和增强政治性、先进性、群众性的前进方向，紧紧围绕团的根本任务、政治责任、工作主线，奋发改革、锐意进取、真抓实干，团的政治建设得到根本性加强，政治站位切实提高，政治功能更加凸显，紧紧跟党走的行动更加自觉。思想政治主旋律更加高扬，团建科学化水平不断提升，从严治团取得扎实进展，青年生力军作用更加彰显，共青团伙伴队伍日益壮大，青年发展大格局正在形成，共青团在改革新征程中展现出新的时代面貌。
+			</div>
+			<dl>
+				<dt>展开</dt>
+				<dd>查找</dd>
+				<dd>替换</dd>
+			</dl>
+			<div class="sec">
+				<ul class="nav">
+					<li class="activ">查找</li>
+					<li>替换</li>
+					<li>×</li>
+				</ul>
+				<ul class="con">
+					<li class="Search">
+						<input type="text" name="" id="" value="" />
+						<button>查找</button>
+					</li>
+					<li class="replace">
+						<input type="text" name="" id="" value="" />
+						<input type="text" name="" id="" value="" />
+						<button>替换</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

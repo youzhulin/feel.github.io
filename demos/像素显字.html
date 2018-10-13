@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				background: #000000;
+			}
+			
+			#cv {
+				background: #fff;
+			}
+			
+			ul {
+				float: left;
+				color: #00CC00;
+				font-size: 20px;
+				cursor: pointer;
+			}
+			
+			li {
+				margin: 10px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oCv = document.getElementById('cv');
+				var oGC = oCv.getContext('2d');
+				var aLi = document.getElementsByTagName('li');
+				for(var i = 0; i < aLi.length; i++) {
+					aLi[i].onclick = function() {
+						_this = this;
+						this.n = 10;
+						this.num =0;
+						oGC.clearRect(0, 0, oCv.width, oCv.height);
+						clearInterval(this.timer)
+						this.timer = setInterval(function() {
+							oGC.clearRect(0, 0, oCv.width, oCv.height);
+							var str = _this.innerHTML;
+							var h = 160;
+							oGC.textBaseline = 'hanging';
+							oGC.fillStyle = '#0033FF';
+							oGC.font = h + 'px sans-serif';
+							var w = oGC.measureText(str).width;
+							oGC.fillText(str, (oCv.width - w) / 2, (oCv.height - h) / 2);
+							var oImg = oGC.getImageData((oCv.width - w) / 2, (oCv.height - h) / 2, w, h);
+							oGC.clearRect(0,0,oCv.width,oCv.height);
+							var newImg = oGC.createImageData(w, h);
+							_this.num = h*w;
+							_this.n--;
+							if(_this.n <= 1 ){
+								clearInterval(_this.timer);
+								_this.n = 1 
+							}
+							var arr = randomArr(parseInt(_this.num),parseInt(_this.num /_this.n));
+							for(var i = 0; i < arr.length; i++) {
+								newImg.data[4 * arr[i]] = oImg.data[4 * arr[i]];
+								newImg.data[4 * arr[i] + 1] = oImg.data[4 * arr[i] + 1];
+								newImg.data[4 * arr[i] + 2] = oImg.data[4 * arr[i] + 2];
+								newImg.data[4 * arr[i] + 3] = oImg.data[4 * arr[i] + 3];
+							}
+							oGC.putImageData(newImg, (oCv.width - w) / 2, (oCv.height - h) / 2)
+						},100)
+					}
+				}
+				function randomArr(all, now) {
+					var arr = [];
+					var newArr = [];
+					for(var i = 0; i < all; i++) {
+						arr.push(i)
+					}
+					for(var i = 0; i < now; i++) {
+						newArr.push(arr.splice(Math.floor(Math.random() * arr.length), 1))
+					}
+					return newArr;
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<ul>
+			<li>我</li>
+			<li>在</li>
+			<li>大</li>
+			<li>千</li>
+			<li>世</li>
+			<li>界</li>
+		</ul>
+		<canvas id="cv" width="400" height="300"></canvas>
+	</body>
+
+</html>

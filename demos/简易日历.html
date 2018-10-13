@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .clearfix::after{
+            content: '';
+            height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+        .clearfix{
+            *zoom: 1;
+        }
+        .box{
+            width: 280px;
+            height: 530px;
+            background: #d9d2c2;
+            padding: 10px;
+            margin: 0 auto;
+        }
+        ul,li{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            background: #fdf6e3;
+            margin-bottom:30px;
+        }
+        li{
+            width: 70px;
+            height:70px;
+            margin: 10px;
+             border:1px solid #666;
+            text-align: center;
+            line-height: 70px;
+            font-weight: bold;
+            float: left;
+            background: #fcf9f0;
+            cursor:pointer;
+        }
+        .content{
+            background: #fdf6e3;
+            padding: 10px;
+        }
+        .set{
+            background: #666;
+            color: aliceblue;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oLi=document.getElementsByTagName("li");
+            var oCon=document.getElementsByClassName("content")[0];
+            var arr=['1月的活动','2月的活动','3月的活动','4月的活动','5月的活动','6月的活动','7月的活动','8月的活动','9月的活动','10月的活动','11月的活动','12月的活动']
+            for(var i=0;i<oLi.length;i++){
+                oLi[i].index=i
+                oLi[i].onmouseover=function(){
+                    for(var i=0;i<oLi.length;i++){
+                        oLi[i].className='';
+                    }
+                    this.className='set';
+                    oCon.innerHTML="<h2>"+this.innerHTML+"</h2>"+"<p>"+arr[this.index]+"</p>"
+
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <ul class="clearfix">
+            <li class="set">一月</li>
+            <li>二月</li>
+            <li>三月</li>
+            <li>四月</li>
+            <li>五月</li>
+            <li>六月</li>
+            <li>七月</li>
+            <li>八月</li>
+            <li>九月</li>
+            <li>十月</li>
+            <li>十一月</li>
+            <li>十二月</li>
+        </ul>
+        <div class="content">
+            <h2>1月</h2>
+            <p>1月的活动</p>
+        </div>
+    </div>
+</body>
+</html>

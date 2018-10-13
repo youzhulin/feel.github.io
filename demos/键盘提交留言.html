@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        textarea {
+            width: 300px;
+            height: 100px;
+            resize: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            line-height: 30px;
+            border-bottom: 1px dashed #ccc;
+            list-style: none;
+        }
+
+        div {
+            padding: 20px;
+            border: 1px solid #999;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var otext = document.getElementsByTagName("textarea")[0];
+            var oBtn = document.getElementsByTagName("button")[0];
+            var oul = document.getElementsByTagName("ul")[0];
+            function release() {
+                var oLi = document.createElement("li");
+                oLi.innerText = otext.value;
+                if (oul.children.length > 0) {
+                    oul.insertBefore(oLi, oul.children[0])
+                } else {
+                    oul.appendChild(oLi)
+                }
+                otext.value = ""
+            }
+            oBtn.onclick = release
+            otext.onkeydown = function (ev) {
+                var oEvent = ev||event;
+                if (oEvent.keyCode == 13 && oEvent.ctrlKey) {
+                    release()
+                }
+            }
+        }
+        document.oncontextmenu = function(){
+            return false
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>发布</button>
+        <ul></ul>
+    </div>
+</body>
+
+</html>

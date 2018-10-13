@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+			}
+			
+			p {
+				margin: 0;
+			}
+			
+			.wrap {
+				margin: 100px auto;
+				width: 700px;
+				height: 400px;
+				background: url(img/2.jpg);
+				background-size: cover;
+				padding: 50px;
+			}
+			
+			.contente {
+				width: 360px;
+				height: 362px;
+				margin-left: 20px;
+				background: #84071A;
+				padding: 20px;
+				color: #ddd;
+				user-select: none;
+			}
+			
+			img {
+				border: none;
+				vertical-align: bottom;
+			}
+			
+			.contente,
+			img {
+				float: left;
+			}
+			
+			span {
+				color: #ff0;
+				cursor: pointer;
+			}
+			
+			.comments {
+				width: 200px;
+				height: 150px;
+				overflow: hidden;
+				background: #0ff;
+				font: 12px/20px "微软雅黑";
+				padding: 10px;
+				position: absolute;
+				display: none;
+			}
+			
+			.comments p {
+				padding: 10px;
+				position: absolute;
+				top: 0;
+				user-select: none;
+			}
+			
+			.scroll {
+				width: 10px;
+				height: 150px;
+				background: #ccc;
+				position: absolute;
+				left: 0;
+				display: none;
+			}
+			
+			.bar {
+				width: 10px;
+				height: 10px;
+				background: #0000FF;
+				position: absolute;
+				left: 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oContente = document.getElementsByClassName('contente')[0];
+				var oCSpan = oContente.getElementsByTagName('span')[0];
+				var oComments = document.getElementsByClassName('comments')[0];
+				var oCSP = oComments.getElementsByTagName('p')[0]
+				var spanLeft = oCSpan.offsetLeft;
+				var spanTop = oCSpan.offsetTop;
+				oComments.style.left = (spanLeft - 150) + 'px';
+				oComments.style.top = (spanTop + 30) + 'px';
+				var oBar = document.getElementsByClassName('bar')[0];
+				var oScroll = document.getElementsByClassName('scroll')[0];
+				var timer = '';
+				var oA = oComments.getElementsByTagName('a')[0];
+				var Y = 0;
+				oA.onclick = function() {
+					oScroll.style.display = 'inline-block';
+					oA.style.display = 'none';
+				};
+				oCSpan.onmouseenter = oComments.onmouseenter = function() {
+					clearTimeout(timer)
+					oComments.style.display = 'block';
+				};
+				oCSpan.onmouseleave = oComments.onmouseleave = function() {
+					timer = setTimeout(function() {
+						oScroll.style.display = 'none';
+						oA.style.display = 'inline-block';
+						oComments.style.display = 'none';
+						oCSP.style.top = '0px';
+					}, 500)
+				};
+				oBar.onmousedown = function(ev) {
+					document.onmousemove = function(ev) {
+						scroll();
+					}
+				};
+
+				function scroll(ev) {
+					var oEvent = ev || event;
+					Y = oEvent.clientY - oBar.offsetHeight - oScroll.getBoundingClientRect().top;
+					if(Y <= 0) {
+						Y = 0
+					} else if(Y > oScroll.offsetHeight) {
+						Y = oScroll.offsetHeight;
+					}
+					oBar.style.top = Y + 'px';
+					var num = (Y / oScroll.offsetHeight).toFixed(2);
+					oCSP.style.top = -oCSP.offsetHeight * num + 'px';
+					document.onmouseup = function() {
+						document.onmousemove = '';
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<img src="img/1.jpg" />
+			<p class="contente">
+				王力宏（Leehom Wang），1976年5月17日出生于美国纽约罗切斯特，祖籍浙江义乌；华语流行乐男歌手、音乐制作人、演员、导演， 拥有 <span>威廉姆斯大学</span>和伯克利音乐学院双荣誉博士的学历。1995年发行个人首张专辑《情敌贝多芬》，从而进入演艺圈 [4] 。1998年凭借专辑《公转自转》获得关注 [5] ，并于次年获得第10届台湾金曲奖最佳国语男演唱人奖、最佳唱片制作人奖 [6] 。2000年以动作电影《雷霆战警》涉足影坛。2004年在专辑《心中的日月》中首创chinked-out曲风 [7] ；同年凭借专辑《不可思议》获得第15届台湾金曲奖最佳唱片制作人奖 [8] 。
+				<div class="comments">
+					<p>
+						威廉姆斯学院（Williams college），创立于1793年，位于美国马萨诸塞州威廉斯敦。是一所享誉美国乃至世界的顶级文理学院。有学生2000人，亚裔占9%。威廉姆斯学院是美国最有名的贵族学院。 作为美国文理学院之首，威廉姆斯学院代表着美国最引以为傲
+						<a href="javaScirpt:;">详情>></a>的教育精髓——规模小、质量高，专注本科，崇尚通识和人文教育。其声誉在美国丝毫不亚于耶鲁、哈佛等名校，且更为美国上流家庭所青睐 [1] 。 在《福布斯》杂志发布的2017美国大学排行榜上，威廉姆斯学院位居全美第二位，仅次于斯坦福大学，超越哈佛、耶鲁、普林斯顿等一众世界一流学府。在《U.S.NEWS》发布的美国文理学院排行榜中，威廉姆斯学院连续15年位居全美第一 。2017年8月，《福布斯》公布2017年美国大学排行榜，威廉姆斯学院排名第13位。 [3]
+					</p>
+					<div class="scroll">
+						<div class="bar"></div>
+					</div>
+				</div>
+			</p>
+		</div>
+	</body>
+
+</html>

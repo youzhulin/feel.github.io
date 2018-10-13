@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+				background: url(img/bg.jpg);
+				background-size: cover;
+				background-attachment: fixed;
+			}
+			
+			h2 {
+				margin: 0;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			em {
+				font-style: normal;
+			}
+			
+			.wrap {
+				width: 760px;
+				margin: 50px auto;
+			}
+			
+			h2 {
+				text-align: center;
+				margin-bottom: 48px;
+			}
+			
+			h2 a {
+				text-decoration: none;
+				display: inline-block;
+				width: 212px;
+				height: 40px;
+				color: #fff;
+				background: url(img/logo_03.png) no-repeat;
+				text-indent: 50px;
+				font-size: 20px;
+				position: relative;
+			}
+			
+			h2 a strong {
+				display: inline-block;
+				width: 120px;
+				height: 2px;
+				background: #E1F1EF;
+				margin-left: 84px;
+				vertical-align: top;
+				position: absolute;
+				top: 25px;
+				left: 10px;
+			}
+			
+			h2 a span {
+				display: inline-block;
+				width: 152px;
+				text-align: center;
+			}
+			
+			h2 a span:nth-of-type(1) {
+				position: absolute;
+				left: 46px;
+			}
+			
+			h2 a span:nth-of-type(2) {
+				font-size: 12px;
+				vertical-align: bottom;
+				float: right;
+				position: absolute;
+				bottom: 0;
+				left: 50px;
+			}
+			
+			.conte {
+				width: 100%;
+				margin-bottom: 20px;
+			}
+			
+			.choose,
+			.nav_list {
+				height: 50px;
+				line-height: 50px;
+				background: rgba(247, 249, 248, 0.9);
+				text-indent: 20px;
+				font-size: 14px;
+			}
+			
+			.choose span {
+				color: #000;
+				float: left;
+				margin-right: 10px;
+			}
+			
+			.selc .selct {
+				color: #28A5C4;
+			}
+			
+			.choose a {
+				display: inline-block;
+				width: 18px;
+				height: 18px;
+				background: #28A5C4;
+				line-height: 18px;
+				text-indent: 0;
+				text-align: center;
+				color: #fff;
+			}
+			
+			mark {
+				color: #28A5C4;
+				background: none;
+				padding: 3px 2px 2px 7px;
+				border: 1px solid #28A5C4;
+				margin-right: 10px;
+			}
+			
+			.selc {
+				padding: 20px 30px;
+				background: rgba(225, 225, 225, 0.9);
+			}
+			
+			.selc li {
+				height: 40px;
+				border-bottom: 1px dashed #fff;
+				line-height: 40px;
+				font-size: 0;
+			}
+			
+			.selc li:nth-last-of-type(1) {
+				border: none;
+			}
+			
+			.selc span,
+			.selc a {
+				font-size: 14px;
+			}
+			
+			.selc span {
+				color: #8A8A8A;
+			}
+			
+			.selc a {
+				color: #000;
+				margin: 0 10px;
+			}
+			
+			.nav_list span {
+				font: 12px/50px "微软雅黑";
+				color: #999;
+				margin: 0 10px;
+			}
+			
+			.nav_list .active {
+				color: #28A5C4;
+			}
+			
+			.product {
+				width: 100%;
+				background: rgba(255, 255, 255, 0.6);
+			}
+			
+			.product h2 {
+				margin: 0;
+				font: 20px/36px "微软雅黑";
+				text-align: left;
+				text-indent: 50px;
+			}
+			
+			.product p {
+				font-size: 12px;
+				text-indent: 20px;
+				margin: 0 0 10px 0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				//var aSLi = oSelc.getElementsByTagName('li');
+				var crumbData = [{
+						"title": "品牌",
+						"data": ["苹果", "小米", "锤子", "魅族", "华为", "三星", "OPPO", "vivo", "乐视"]
+					},
+					{
+						"title": "尺寸",
+						"data": ["4.0-4.5英寸", "4.6-4.9英寸", "5.0-5.5英寸", "6.0英寸以上"]
+					},
+					{
+						"title": "系统",
+						"data": ["android", "ios", "window phone", "无", "其他"]
+					},
+					{
+						"title": "网络",
+						"data": ["联通3G", "双卡单4G", "双卡双4G", "联通4G"]
+					}
+				];
+				var oSelc = document.getElementsByClassName('selc')[0];
+				var newmark = '';
+				var newa = '';
+				var oChoose = document.querySelector('.choose');
+				var oProduct = document.querySelector('.product');
+				var newLi = '';
+				var newP = '';
+				var _this = '';
+				var num = 0;
+				var beforMark = '';
+				var chooseData = {};
+				var oEm = document.querySelector('em');
+				//newData()
+
+				function newData(index = 0) {
+					for(var i = 0; i < crumbData.length - index; i++) {
+						for(var j = 0; j < crumbData[i]['data'].length - index; j++) {
+							var oLi = document.createElement('li');
+							oProduct.appendChild(oLi);
+							var newH2 = document.createElement('h2');
+							newH2.innerHTML = crumbData[0]['data'][j];
+							oLi.appendChild(newH2)
+							var newP = document.createElement('p');
+							newP.innerHTML = '<em>尺寸:<em><span>' + crumbData[1]['data'][j % crumbData[1]['data'].length] + '</span>';
+							oLi.appendChild(newP);
+							var newP = document.createElement('p');
+							newP.innerHTML = '<em>系统:<em><span>' + crumbData[2]['data'][j % crumbData[2]['data'].length] + '</span>';
+							oLi.appendChild(newP);
+							var newP = document.createElement('p');
+							newP.innerHTML = '<em>网络:<em><span>' + crumbData[3]['data'][j % crumbData[2]['data'].length] + '</span>';
+							oLi.appendChild(newP);
+						}
+					}
+				}
+				var aPrLi = oProduct.querySelectorAll('li');
+				var aLi = '';
+				var oLi = '';
+				var oA = '';
+				for(var i = 0; i < crumbData.length; i++) {
+					oLi = document.createElement('li');
+					oLi.onoff = null;
+					oLi.index = i;
+					oLi.innerHTML = '<span>' + crumbData[i]['title'] + '：</span>';
+					oSelc.appendChild(oLi);
+					for(var j = 0; j < crumbData[i]['data'].length; j++) {
+						oA = document.createElement('a');
+						oA.setAttribute('href', 'javaScript:;');
+						oA.innerHTML = crumbData[i]['data'][j];
+						oLi.appendChild(oA);
+						oA.onmouseenter = function() {
+							this.className = 'selct'
+						}
+						oA.onmouseleave = function() {
+							this.className = '';
+						}
+						oA.onclick = function() {
+							if(this.parentNode.onoff) {
+								this.parentNode.onoff.style.color = '';
+							}
+							this.style.color = '#f00';
+							this.parentNode.onoff = this;
+							chooseData[this.parentNode.index] = this.innerHTML;
+							oEm.innerHTML = '';
+							newMark()
+							num = this.parentNode.index;
+							beforMark = newmark;
+
+						}
+
+					}
+				}
+
+				function newMark() {
+					aLi = oSelc.querySelectorAll('li');
+					for(var m = 0; m < aLi.length; m++) {
+						if(chooseData[m]) {
+							newmark = document.createElement('mark');
+							newmark.index = m;
+							console.log(newmark.index)
+							newmark.innerHTML = chooseData[m];
+							newa = document.createElement('a');
+							newa.innerHTML = 'x';
+							newa.onclick = function() {
+								this.parentNode.remove();
+								delete chooseData[this.parentNode.index];
+								aLi[this.parentNode.index].onoff.style.color = '';
+							}
+							newmark.appendChild(newa);
+							oEm.appendChild(newmark);
+						}
+					}
+				}
+				/*for(var k = 0; k < aPrLi.length; i++) {
+					if(aPrLi[k].firstElementChild == chooseData['0']) {
+						aPrLi[k].style.display = 'block'
+					}
+				}*/
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<h2>
+				<a href="javaScript:;">
+					<span class="china_title">手机抢购</span>
+					<strong></strong>
+					<span class="eg_title">Mobile snapping</span>
+				</a>
+			</h2>
+			<div class="conte">
+				<div class="choose">
+					<span>你的选择：</span>
+					<em></em>
+					<!--<mark>
+						小米
+						<a href="javaScript:;">x</a>
+					</mark>
+					<mark>
+						小米
+						<a href="javaScript:;">x</a>
+					</mark>-->
+				</div>
+				<ul class="selc">
+					<!--<li>
+						<span>品牌：</span>
+						<a href="javaScript:;">苹果</a>
+						<a href="javaScript:;">小米</a>
+						<a href="javaScript:;">魅族</a>
+						<a href="javaScript:;">华为</a>
+						<a href="javaScript:;">三星</a>
+						<a href="javaScript:;">OPPO</a>
+						<a href="javaScript:;">vivo</a>
+						<a href="javaScript:;">乐视</a>
+						<a href="javaScript:;">360</a>
+						<a href="javaScript:;">中兴</a>
+						<a href="javaScript:;">索尼</a>
+					</li>
+					<li>
+						<span>尺寸：</span>
+						<a href="javaScript:;">3.0英寸以下</a>
+						<a href="javaScript:;">3.0-3.9英寸</a>
+						<a href="javaScript:;">4.0-4.5英寸</a>
+						<a href="javaScript:;">4.6-4.9英寸</a>
+						<a href="javaScript:;">5.0-5.5英寸</a>
+						<a href="javaScript:;">6.0英寸</a>
+					</li>
+					<li>
+						<span>系统：</span>
+						<a href="javaScript:;">安卓（Android）</a>
+						<a href="javaScript:;">苹果（iOS）</a>
+						<a href="javaScript:;">微软（WindowsPhone）</a>
+						<a href="javaScript:;">无</a>
+						<a href="javaScript:;">其他</a>
+					</li>
+					<li>
+						<span>网络：</span>
+						<a href="javaScript:;">联通3G</a>
+						<a href="javaScript:;">双卡单4G</a>
+						<a href="javaScript:;">双卡双4G</a>
+						<a href="javaScript:;">联通4G</a>
+						<a href="javaScript:;">电信4G</a>
+						<a href="javaScript:;">移动4G</a>
+					</li>-->
+				</ul>
+			</div>
+			<div class="nav_list">
+				<span class="active">综合排名</span>
+				<span>销量排名</span>
+				<span>价格从低到高</span>
+				<span>价格从高到低</span>
+			</div>
+			<ul class="product">
+
+			</ul>
+		</div>
+	</body>
+
+</html>

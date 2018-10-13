@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        input {
+            width: 80px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var aTab = document.getElementsByTagName("table")[0];
+            var oldColor = "";
+            function del() {
+                var aA = document.getElementsByTagName("a");
+                console.log(aA)
+                for (var i = 0; i < aA.length; i++) {
+                    aA[i].onclick = function () {
+                        aTab.tBodies[0].removeChild(this.parentNode.parentNode);
+                    }
+                }
+            }
+            del()
+            function oddColor() {
+                for (var i = 0; i < aTab.tBodies[0].rows.length; i++) {
+                    aTab.tBodies[0].rows[i].onmouseover = function () {
+                        oldColor = this.style.background;//存入变色之前的颜色
+                        this.style.background = "#ddd"//设置新的颜色
+                    }
+                    aTab.tBodies[0].rows[i].onmouseout = function () {
+                        this.style.background = oldColor//变为原来的颜色
+                    }
+                }
+                for (var i = 0; i < aTab.tBodies[0].rows.length; i++) {
+                    if (i % 2 == 0) {//偶数行
+                        aTab.tBodies[0].rows[i].style.background = "#aaa"
+                    } else {//奇数行
+                        aTab.tBodies[0].rows[i].style.background = ""
+                    }
+                }
+            }
+            oddColor()
+            var aInp = document.getElementsByTagName("input");
+            var aBtn = document.getElementsByTagName("button");
+            aBtn[0].onclick = function () {
+                var oTr = document.createElement("tr")
+                var oTd = document.createElement("td");
+                oTd.innerHTML = aInp[0].value;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement("td");
+                oTd.innerHTML = aInp[1].value;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement("td");
+                oTd.innerHTML = aInp[2].value;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement("td");
+                oTd.innerHTML = aInp[3].value;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement("td");
+                oTd.innerHTML = aInp[4].value;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement("td");
+                oTd.innerHTML = aInp[5].value;
+                oTr.appendChild(oTd);
+                var oTd = document.createElement("td");
+                oTd.innerHTML = "<a href='javaScript:;'>删除</a>"
+                oTr.appendChild(oTd);
+                aTab.tBodies[0].appendChild(oTr);
+                del()
+                oddColor();
+                sear();
+            }
+            function sear() {
+                aBtn[1].onclick = function () {
+                    for (var i = 0; i < aTab.tBodies[0].rows.length; i++) {
+                        for (var j = 0; j < aTab.tBodies[0].rows[i].cells.length; j++) {
+                            var oTd = aTab.tBodies[0].rows[i].cells[j].innerHTML.toLowerCase();
+                            var oSeBox = aInp[6].value.toLowerCase();
+                            var arr = oSeBox.split(' ');
+                            for (var y = 0; y < arr.length; y++) {
+                                if (oTd.search(arr[y]) != -1) {
+                                    oldColor = aTab.tBodies[0].rows[i].cells[j].style.background;
+                                    aTab.tBodies[0].rows[i].cells[j].style.background = "#ff0";
+                                } else {
+                                    aTab.tBodies[0].rows[i].cells[j].style.background = oldColor;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            sear()
+            aBtn[2].onclick = function () {
+                var arr = [];
+                for (var i = 0; i < aTab.tBodies[0].rows.length; i++) {
+                    console.log("1")
+                    arr[i] = aTab.tBodies[0].rows[i];
+                }
+                arr.sort(function (tr1, tr2) {
+                    var n1 = parseInt(tr1.cells[0].innerHTML);
+                    var n2 = parseInt(tr2.cells[0].innerHTML);
+                    return n1 - n2;
+                })
+                for (var i = 0; i < arr.length; i++) {
+                    aTab.tBodies[0].appendChild(arr[i])
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <input type="text">
+    <button>添加</button>
+    <br>
+    <br>
+    <input type="text">
+    <button>搜索</button>
+    <button>排序</button>
+    <br>
+    <br>
+    <table style="border: 1px solid #000 ;width: 500px">
+        <thead>
+            <th>星期一</th>
+            <th>星期二</th>
+            <th>星期三</th>
+            <th>星期四</th>
+            <th>星期五</th>
+            <th>星期六</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>数学</td>
+                <td>数学</td>
+                <td>数学</td>
+                <td>数学</td>
+                <td>数学</td>
+                <td>数学</td>
+                <td>
+                    <a href="javaScript:;">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>语文</td>
+                <td>
+                    <a href="javaScript:;">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>历史</td>
+                <td>历史</td>
+                <td>历史</td>
+                <td>历史</td>
+                <td>历史</td>
+                <td>历史</td>
+                <td>
+                    <a href="javaScript:;">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>物理</td>
+                <td>物理</td>
+                <td>物理</td>
+                <td>物理</td>
+                <td>物理</td>
+                <td>物理</td>
+                <td>
+                    <a href="javaScript:;">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>化学</td>
+                <td>化学</td>
+                <td>化学</td>
+                <td>化学</td>
+                <td>化学</td>
+                <td>化学</td>
+                <td>
+                    <a href="javaScript:;">删除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>政治</td>
+                <td>政治</td>
+                <td>政治</td>
+                <td>政治</td>
+                <td>政治</td>
+                <td>政治</td>
+                <td>
+                    <a href="javaScript:;">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

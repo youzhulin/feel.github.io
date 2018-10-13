@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 200px;
+				height: 200px;
+				background: #000F99;
+				position: absolute;
+			}
+			
+			button {
+				position: absolute;
+				z-index: 2;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oDiv = document.getElementsByTagName('div')[0];
+				var arr = [];
+				var i = 0;
+				var l = 0;
+				var t = 0;
+				drag(oDiv)
+
+				function drag(oDiv) {
+					oDiv.onmousedown = function(ev) {
+						arr = [];
+						if(oDiv.setCapture) {
+							oDiv.setCapture() //设置全局捕获
+						}
+						var oEvent = ev || event;
+						var iW = oDiv.offsetLeft;
+						var iH = oDiv.offsetTop;;
+						var x = oEvent.clientX - iW;
+						var y = oEvent.clientY - iH;
+						var wid = document.documentElement.clientWidth || document.body.clientWidth;
+						var hei = document.documentElement.clientHeight || document.body.clientHeight;
+						//console.log(scrollTop)
+						document.onmousemove = function(ev) {
+							var oEvent = ev || event;
+							l = oEvent.clientX - x;
+							t = oEvent.clientY - y;
+							if(l <= 0) {
+								l = 0;
+							} else if(l >= (wid - oDiv.offsetWidth)) {
+								l = wid - oDiv.offsetWidth + 'px'
+							}
+							if(t <= 0) {
+								t = 0;
+							} else if(t >= (hei - oDiv.offsetHeight)) {
+								t = hei - oDiv.offsetHeight + 'px'
+							}
+							var jsons = {
+								l: l,
+								t: t
+							};
+							arr.push(jsons);
+							i = arr.length;
+							oDiv.style.left = l + 'px';
+							oDiv.style.top = t + 'px';
+							return false;
+						}
+						document.onmouseup = function() {
+							document.onmousemove = document.onmouseup = null;
+							if(oDiv.releaseCapture) {
+								oDiv.releaseCapture() //释放全局捕获
+							}
+						}
+					}
+				}
+				var timer = null;
+
+				function playback(obj) {
+					timer = setInterval(function() {
+						console.log(i)
+						posi(obj, arr[i - 1]['l'], arr[i - 1]['t'])
+						i--;
+						if(i <= 0) {
+							clearInterval(timer)
+						}
+					}, 30);
+				}
+
+				var oBtn = document.getElementsByTagName('button')[0];
+				oBtn.onclick = function() {
+					playback(oDiv)
+				};
+
+				function posi(obj, left, top) {
+					obj.style.left = left + 'px';
+					obj.style.top = top + 'px';
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<button>回放</button>
+		<div></div>
+	</body>
+
+</html>

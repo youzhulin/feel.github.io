@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 1200px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+            height: 154px;
+        }
+        ul{
+            width: 2736px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+        }
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li{
+            float: left;
+        }
+        .clearfix:after{
+            content: '';
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+        .clearfix{
+            *zoom: 1;
+        }
+        button{
+            width: 50px;
+            height: 100px;
+            opacity:0.5;
+            position: absolute;
+            z-index:1;
+            top: 30px;
+            cursor: pointer;
+        }
+        #btn1{
+            left: 0;
+        }
+        #btn2{
+            right: 0;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var oUl=document.getElementById("con");
+            var aBtn=document.getElementsByTagName("button");
+            var str=null;
+            var n=-1;
+            oUl.innerHTML = oUl.innerHTML + oUl.innerHTML//复制两套ul;
+            aBtn[0].onclick=function(){n=-1}
+            aBtn[1].onclick=function(){n=1}            
+            function move(){
+                if(oUl.offsetLeft<-oUl.offsetWidth/2){//当ul向左移动了整个ul的一半时
+                     oUl.style.left = '0'//让ul的定位返回初始0
+                } 
+                if(oUl.offsetLeft>0){
+                    oUl.style.left=(-oUl.offsetWidth/2)+"px"
+                }                   
+                   oUl.style.left = oUl.offsetLeft+n+"px"//每次执行函数，让ul向左移动一个像素
+            }
+            str = setInterval(move,30)
+            oUl.onmouseover=function(){
+                clearInterval(str)
+            }
+            oUl.onmouseout=function(){
+                str = setInterval(move,30)                
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="box">
+        <button id="btn1"><</button>
+        <ul class="clearfix" id="con">
+            <li><img src="img/1.png" alt=""></li>
+            <li><img src="img/2.png" alt=""></li>
+            <li><img src="img/3.png" alt=""></li>
+            <li><img src="img/4.png" alt=""></li>
+            <li><img src="img/5.png" alt=""></li>
+            <li><img src="img/6.png" alt=""></li>
+        </ul>
+        <button id="btn2">></button>
+    </div>
+</body>
+</html>

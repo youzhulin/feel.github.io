@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #content {
+            width: 100px;
+            height: 100px;
+            background: #0f0;
+            position: absolute;
+        }
+        #box{
+            position: relative;
+            margin:100px auto;
+            width: 800px;
+            height: 500px;
+            background: #ccc;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oDiv = document.getElementById("content");
+            var oDiv1 = document.getElementById("box");
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                X = oEvent.clientX - oDiv.offsetLeft;
+                Y = oEvent.clientY - oDiv.offsetTop;
+                document.onmousemove = function (ev) {
+                    var oEvent = ev || event;
+                    var m = oEvent.clientX - X;
+                    var n = oEvent.clientY - Y;
+                    if (m < 80) {
+                        m = 0
+                    } else if (m >oDiv1.offsetWidth - oDiv.offsetWidth - 80) {
+                        m = oDiv1.offsetWidth - oDiv.offsetWidth
+                    }
+                    if (n < 80) {
+                        n = 0
+                    } else if (n > oDiv1.offsetHeight - oDiv.offsetHeight-80) {
+                        n = oDiv1.offsetHeight - oDiv.offsetHeight
+                    }
+                    oDiv.style.left = m + "px";
+                    oDiv.style.top = n + "px";
+                }
+                document.onmouseup = function () {
+                    oDiv.onmouseup = "";
+                    document.onmousemove = "";
+                }
+                return false;//阻止火狐默认bug
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box">
+        大家聚聚军军军军军军军军军奥所所所所所所所所所所所所所所多多多多多多多女错错错错错错错错错错错错扩木寻寻寻
+        <div id="content">的点点滴滴多多多多多多多多</div>
+        么么么么木木木木木木木木木木木木女女女女女女女女女女女女女女女你一一一一i
+    </div>
+</body>
+
+</html>

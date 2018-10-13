@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/move.js"></script>
+    <style>
+        .clearfix::after {
+            content: "";
+            height: 0;
+            visibility: hidden;
+            display: block;
+            clear: both;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        img {
+            border: none;
+            vertical-align: top;
+        }
+
+        ul {
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .img li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            overflow: hidden;
+        }
+
+        .box {
+            width: 600px;
+            height: 480px;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .thumbnail {
+            position: absolute;
+            bottom: 0px;
+            left: 0;
+            z-index: 1;
+            width: 1200px;
+            background: #000;
+        }
+
+        .thumbnail li {
+            float: left;
+            filter: alpha(opcity:60);
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .fr {
+            float: right;
+        }
+
+        .button div {
+            height: 400px;
+            width: 300px;
+            float: left;
+        }
+
+        .button {
+            position: absolute;
+            top: 0;
+            z-index: 2;
+        }
+
+        .button img {
+            position: absolute;
+            filter: alpha(opcity:0);
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .per {
+            left: 20px;
+            top: 150px;
+        }
+
+        .next {
+            right: 20px;
+            top: 150px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            /*-------------------------------------------------------------button---------------------------------------------------------------------*/
+            var aPer = document.getElementsByClassName("per")[0];
+            var aNext = document.getElementsByClassName("next")[0];
+            var aLeft = document.getElementsByClassName("left")[0];
+            var aRight = document.getElementsByClassName("right")[0];
+            aLeft.onmouseover = function () {
+                setStyle(aPer, 'opacity', 100, 6)
+            }
+            aRight.onmouseover = function () {
+                setStyle(aNext, 'opacity', 100, 6)
+            }
+            aLeft.onmouseout = function () {
+                setStyle(aPer, 'opacity', 0, 6)
+            }
+            aRight.onmouseout = function () {
+                setStyle(aNext, 'opacity', 0, 6)
+            }
+            /*---------------------------------------------------------------thumbnail Opacity---------------------------------------------------------------------*/
+
+            var aThum = document.getElementsByClassName("thumbnail")[0];
+            var aLiThum = aThum.getElementsByTagName("li");
+            function thumbnailOpacity(obj) {
+                for (var i = 0; i < aLiThum.length; i++) {
+                    setStyle(aLiThum[i], 'opacity', 60, 6)
+                };
+                setStyle(obj, 'opacity', 100, 6)
+            }
+            for (var i = 0; i < aLiThum.length; i++) {
+                aLiThum[i].onmouseover = function () {
+                    thumbnailOpacity(this)
+                }
+            }
+            /*-------------------------------------------------------------------------------------------------------------------------*/
+            var aImg = document.getElementsByClassName("img")[0];
+            var aLiImg = aImg.getElementsByTagName("li");
+            var index = 0;
+            function switching(index) {
+                for (var i = 0; i < aLiImg.length; i++) {
+                    aLiImg[i].style.zIndex = 0;
+                    aLiImg[i].style.height = 0;
+                }
+                if (index == 0) {
+                    aLiImg[aLiImg.length - 1].style.zIndex = 0;
+                    aLiImg[aLiImg.length - 1].style.height = "400px";
+                } else {
+                    aLiImg[index - 1].style.zIndex = 0;
+                    aLiImg[index - 1].style.height = "400px";
+                }
+                setStyle(aLiImg[index], 'height', 400, 6);
+                aLiImg[index].style.zIndex = 1
+            }
+            for (var i = 0; i < aLiThum.length; i++) {
+                aLiThum[i].index = i;
+                aLiThum[i].onclick = function () {
+                    switching(this.index)
+                    console.log(this.index)
+                    thumbnailOpacity(aLiThum[this.index])
+                }
+            }
+            /*--------------------------------------------------------------------------------------------------------------------------------------*/
+            var aImg = document.getElementsByClassName("img")[0];
+            //console.log(aThum)
+            var aLiImg = aImg.getElementsByTagName("li");
+            var num = 0;
+            aNext.onclick = function () {
+                if (num < aLiImg.length - 1) {
+                    num++;
+                } else {
+                    num = 0
+                }
+                switching(num)
+                thumbnailOpacity(aLiThum[num]);
+                console.log(num)
+                if (num > 2 && num < 8) {
+                    setStyle(aThum, 'left', -120 * (num - 2), 6)
+                } else if (num == 0) {
+                    setStyle(aThum, 'left', 0, 6)
+                }
+            }
+            var timer= setInterval(aNext.onclick,3000)
+            var aBox = document.getElementsByClassName("box")[0];
+            aPer.onclick = function () {
+                num--;
+                if (num == -1) {
+                    num = aLiImg.length - 1;
+                }
+                //console.log(num)
+                switching(num);
+                thumbnailOpacity(aLiThum[num]);
+                if (num > 3 && num < 10) {
+                    setStyle(aThum, 'left', -((num - 4)) * 120, 6)
+                } else if (num == 0) {
+                    setStyle(aThum, 'left', 0, 6)
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="box">
+        <div class="button clearfix">
+            <div class="left">
+                <img src="img/left.png" alt="" class="per">
+            </div>
+            <div class="right">
+                <img src="img/right.png" alt="" class="next">
+            </div>
+        </div>
+        <ul class="thumbnail clearfix">
+            <li>
+                <img src="img/imgs/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/5.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/6.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/7.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/8.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/9.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/imgs/10.jpg" alt="">
+            </li>
+        </ul>
+        <ul class="img">
+            <li style="z-index: 1;">
+                <img src="img/flash/1.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/2.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/3.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/4.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/5.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/6.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/7.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/8.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/9.jpg" alt="">
+            </li>
+            <li>
+                <img src="img/flash/10.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

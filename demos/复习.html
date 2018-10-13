@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,li{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			ul{
+				width: 300px;
+			}
+			li{
+				background: #ccc;
+				height: 40px;
+				font: 16px/40px "微软雅黑";
+				margin: 2px;
+			}
+			ul .frist{
+				background: #000;
+				color: #fff;
+			}
+			ul .last{
+				background: #f00;
+			}
+			ul .hover{
+				background: #ff0;
+			}
+			ul .next{
+				background: #0ff;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oUl = document.getElementsByTagName('ul')[0];
+				var aLi = oUl.children;
+				var frist = oUl.firstElementChild;
+				var last = oUl.lastElementChild;
+				for(var i = 0 ; i < aLi.length ; i++){
+					aLi[i].onmouseenter = function(){
+						if(this == frist||this == last){
+							this.className = 'last'
+						}else{
+							this.className = 'hover';
+							this.nextElementSibling.className = this.previousElementSibling.className = 'next';
+							frist.className = last.className = 'frist';
+						}
+					}
+					aLi[i].onmouseleave = function(){
+						for(var i = 0 ; i < aLi.length ; i++){
+							aLi[i].className = ''
+						};
+						frist.className = last.className = 'frist';
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li class="frist">我是第1个li</li>
+			<li>我是第2个li</li>
+			<li>我是第3个li</li>
+			<li>我是第4个li</li>
+			<li>我是第5个li</li>
+			<li>我是第6个li</li>
+			<li>我是第7个li</li>
+			<li>我是第8个li</li>
+			<li>我是第9个li</li>
+			<li class="frist">我是第10个li</li>
+		</ul>
+	</body>
+</html>

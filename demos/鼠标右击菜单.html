@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            display: none;
+            padding: 20px;
+            background: #ccc;
+            position: absolute;
+        }
+
+        li {
+            margin: 0;
+            list-style: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        document.oncontextmenu = function (ev) {
+            var oEvent = ev || event;
+            var oUl = document.getElementsByTagName("ul")[0];
+            oUl.style.display = 'block';
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var oleft = oEvent.clientX + "px"
+            var oTop = oEvent.clientY + scrollTop + "px"
+            oUl.style.left = oleft;
+            oUl.style.top = oTop;
+            return false;
+        }
+        document.onclick = function () {
+            console.log("1")
+            var oUl = document.getElementsByTagName("ul")[0];
+            oUl.style.display = 'none';
+        }
+        window.onload = function () {
+            var oUl = document.getElementsByTagName("ul")[0];
+            var aLi = document.getElementsByTagName("li");
+            for (var i = 0; i < aLi.length; i++) {
+                aLi[i].onclick = function (ev) {//注意：ev的位置
+                    alert("还真点啊？！！！啥都没有点啥点，傻逼！");
+                    oUl.style.display = 'block';
+                    var oEvent = ev || event;
+                    oEvent.cancelBubble = true;
+                }
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>点我</li>
+        <li>点我</li>
+        <li>点我</li>
+        <li>点我</li>
+        <li>点我</li>
+        <li>点我</li>
+        <li>点我</li>
+    </ul>
+</body>
+
+</html>

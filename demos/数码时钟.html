@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: #00050a
+        }
+        #box{
+            width: 500px;
+            height: 370px;
+            background:#011326;
+            margin: 100px auto;
+            color: #ea89b3 ;
+            padding-top: 30px;
+            border: 10px double #274a91
+        }
+        #years{
+            font:bold 20px/50px "微软雅黑";
+            text-indent: 50px; 
+            border-bottom: 1px solid #274a91
+        }
+        #time{
+            font: bold 50px/150px "微软雅黑";
+            text-align: center;
+        }
+    </style>
+    <script>
+        function toDou(n){
+            if(n>=10){
+                return ''+n
+            }else{
+                return '0'+n
+            }
+        }
+        window.onload=function(){
+            var oYe=document.getElementById("year")
+            var oMo=document.getElementById("month")
+            var oDa=document.getElementById("day")
+            var oHo=document.getElementById("hours")
+            var oMi=document.getElementById("min")
+            var oSe=document.getElementById("sec")
+            var n='';
+            function times(){
+                var oData=new Date()
+                var  oYes= toDou(oData.getUTCFullYear());//年
+                var  oMos= toDou(oData.getUTCMonth()+1);//月
+                var  oDas= toDou(oData.getDate());//日
+                var  oHos= toDou(oData.getHours()); //时
+                var  oMis= toDou(oData.getMinutes()); //分           
+                var  oSes= toDou(oData.getSeconds());  //秒 
+                oYe.innerHTML=oYes;
+                oMo.innerHTML=oMos;
+                oDa.innerHTML=oDas;
+                oHo.innerHTML=oHos;
+                oMi.innerHTML=oMis;
+                oSe.innerHTML=oSes;
+
+            }
+                  setInterval(times,1000)   
+                  times() 
+        }
+    </script>
+</head>
+<body>
+   <div id="box">
+        <p id="years"><span id="year"></span>年<span id="month"></span>月<span id="day"></span>日</p>
+        <p id="time"><span id="hours"></span>: <span id="min"></span>: <span id="sec"></span></p>
+   </div>
+</body>
+</html>

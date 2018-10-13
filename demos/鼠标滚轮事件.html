@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 3000px;
+			}
+			div{
+				width: 200px;
+				height: 200px;
+				background: #ff0;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oDiv = document.getElementsByTagName('div')[0];
+				document.onmousewheel = fn1;
+				if(document.addEventListener){
+					document.addEventListener('DOMMouseScroll',fn1,false)
+				}
+				function fn1(ev){
+					var oEvent = ev||event;
+					var bool = true;
+					if(oEvent.wheelDelta){
+						bool = oEvent.wheelDelta>0?true:false;
+					}else{
+						bool = oEvent.detail<0?true:false;
+					}
+					if(bool){
+						oDiv.style.height = oDiv.offsetHeight - 10 + 'px';
+						oDiv.style.width = oDiv.offsetWidth - 10 + 'px';
+					}else{
+						oDiv.style.height = oDiv.offsetHeight + 10 + 'px';
+						oDiv.style.width = oDiv.offsetWidth + 10 + 'px';
+					}
+					if(ev.preventDefault){
+						ev.preventDefault()
+					}
+					return false;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

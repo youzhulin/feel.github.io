@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: #ff0;
+            position: absolute;
+        }
+    </style>
+    <script>
+        Drge.prototype.down = function (ev) {
+            var _this = this;
+            var oEvent = event || ev;
+            _this.X = oEvent.clientX - _this.oDiv.offsetLeft;
+            _this.Y = oEvent.clientY - _this.oDiv.offsetTop;
+            document.onmousemove =function(){
+                _this.move(ev);
+            } ;
+            document.onmouseup =function(){
+                _this.up(ev);
+            } ;
+            return false;
+        }
+        Drge.prototype.move = function (ev) {
+            var _this = this;
+            var oEvent = event || ev;
+            _this.oDiv.style.left = oEvent.clientX - _this.X + "px";
+            _this.oDiv.style.top = oEvent.clientY - _this.Y + "px";
+        }
+        Drge.prototype.up = function up() {
+            document.onmousemove = "";
+            document.onmouseup = "";
+        }
+        function Drge(tag) {
+            var _this = this;
+            this.oDiv = document.getElementById(tag);
+            var oEvent = event || ev;
+            this.oDiv.onmousedown = function () {
+                _this.down();
+            };
+        }
+        window.onload = function () {
+            new Drge("box1");
+        }
+    </script>
+</head>
+
+<body>
+    <div id="box1"></div>
+</body>
+
+</html>

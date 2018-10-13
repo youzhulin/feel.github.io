@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box {
+            margin: 20px auto;
+            width: 600px;
+            border: 10px solid #ccc;
+            background: #fc3;
+            font: 16px/30px '微软雅黑';
+            padding: 20px 10px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var oSpan = oBox.getElementsByTagName('span')[0];
+            var oEm = oBox.getElementsByTagName('em')[0];
+            var oA = oBox.getElementsByTagName('a')[0];
+            var onOff = true;
+            var str = oSpan.innerHTML;
+            oA.onclick = function () {
+                if (onOff) {
+                    oSpan.innerHTML = str.substring(0,30);
+                    oA.innerHTML = '&gt;&gt;展开';
+                } else {
+                    oSpan.innerHTML = str;
+                    oA.innerHTML = '&gt;&gt;收缩'
+                }
+                onOff = !onOff;
+            };
+        };
+    </script>
+</head>
+<body>
+    <div id="box">
+        <span>大学在滑铁卢读的cs 计算机科学，第一次实习在亚马逊总部西雅图AWS写后台目前在多伦多一个公司（第一次写知乎 不知道该不该写公司名称）当后台程序员，刚入职第一周，有点迷茫 好多包都看不懂 同事都是大叔 别说妹子了 同年龄的都木有 </span>
+        <em>......</em>
+        <a href="javascript:;">&gt;&gt;收缩</a>
+    </div>
+</body>
+</html>

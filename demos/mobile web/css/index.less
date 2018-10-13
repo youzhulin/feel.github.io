@@ -1,0 +1,780 @@
+
+
+
+// @r:(1/1800)+'%';
+@r:60rem;
+
+/*===============================================resetCss==========================================================*/ 
+body,h1,h2,h3,h4,h5,h6,ul,ol,p,dd{
+    margin: 0;
+}
+ol,ul{
+    padding: 0;
+}
+ol,ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.clearfix::after{
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+img{
+    vertical-align: top;
+    border: none;
+}
+strong{
+    font-weight: normal;
+}
+input{
+    padding: 0;
+    border: none;
+}
+/*===================================================indexStyle=======================================================*/ 
+
+
+/*---------------------------------------------------头部---------------------------------------------------------------*/ 
+header{
+    height: 230/@r;
+    text-indent: -10000px;
+    background: #3C3844 url(../img/logo.png) no-repeat 420/@r 0;
+    background-size: 955/@r;
+}
+/*---------------------------------------------------导航---------------------------------------------------------------*/ 
+nav{
+    padding: 13/@r;
+    background: #56545E;
+    font-size:36/@r;
+    a{
+        display: block;
+        color: #fff;
+        width: 100%;
+        height: 100%;
+    }
+    li{
+        float: left;
+        width: 117/@r;
+        padding: 18/@r 85/@r 0;
+        height: 87/@r;
+        text-align: center;
+        border-left: 1px solid #AAA6B2;
+        border-right: 1px solid #24212B;
+        span:nth-of-type(2){
+            font-size:14/@r;
+            color: #A598A0;
+        }
+    }
+    li:nth-of-type(1){
+        border-left: none;
+    }
+    li:nth-last-of-type(1){
+        border-right: none;
+    }
+}
+
+/* =======================================================页面内容======================================================================== */
+
+.top{
+    position: relative;
+    top: 0;
+    left: 0;
+    padding-bottom: 10/@r;
+  }
+  .contentwrap{
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+/*---------------------------------------------------banner---------------------------------------------------------------*/ 
+.banner{
+    width: 100%;
+    height: 990/@r;
+    position: relative;
+    overflow: hidden;
+    ul{
+        width: 5400/@r;
+       position: absolute;
+       left: 0;
+    }
+    li{
+        float: left;
+    }
+    ol{
+        position: absolute;
+        bottom: 0;
+        li{
+            height: 17/@r;
+            width:599/@r;
+            float: left;
+            background: #D0CDD1;
+        }
+        .active{
+            background: #38A8A6
+        }
+    }
+    a{
+        display: block;
+        height:990/@r;
+    }
+    img{
+        width: 1800/@r;
+        height: 990/@r;
+    }
+}
+
+/*---------------------------------------------------全国连锁---------------------------------------------------------------*/ 
+.chain{
+    padding: 93/@r 89/@r 0;
+    text-align: center;
+    color: #7C7C7C;
+    span{
+        display: inline-block;
+        margin: 0 27/@r;
+    }
+    h3{
+        font-size:54/@r; 
+    }
+    p{
+        font-size:26/@r; 
+        margin-bottom: 103/@r;
+    }
+    ul{
+        display: flex;
+        justify-content: space-around;
+        letter-spacing: 5/@r;
+        margin-bottom: 108/@r;
+        li{
+
+        }
+        img{
+            width: 335/@r;
+            margin-bottom:28/@r; 
+        }
+        h4{
+            font-size: 30/@r;
+            color: #7C7C7C;
+            margin-bottom: 8/@r;
+        }
+        h5{
+            font-size: 16/@r;
+            color: #7C7C7C;
+        }
+
+    }
+}
+
+/*---------------------------------------------------千元礼包---------------------------------------------------------------*/ 
+.gift{
+    background: #EAEAEA;
+    overflow: hidden;
+    img{
+        float: left;
+        height: 422/@r;
+        margin-left: 155/@r;
+        margin-right: 268/@r;
+    }
+    .title{
+        float: left;
+        text-align: center;
+        padding-top: 150/@r;
+        color: #383838;
+        h3{
+            font-size: 60/@r;
+        }
+        p{
+            font-size: 18/@r;
+        }
+    }
+    span{
+        display: inline-block;
+        padding: 0 250/@r;
+        background: #F40C28;
+        color: #fff;
+        line-height: 84/@r;
+        font-size: 40/@r;
+        transform: rotateZ(40deg) translate(360/@r,-600/@r)
+    }
+}
+/*---=================================================== 婴儿大照片 =======================================================--*/ 
+.baby{
+    text-align: center;
+    padding-top: 106/@r;
+    color: #333333;
+    border-bottom: 47/@r solid #DDDDDD;
+    h3{
+        font-size: 59/@r;
+        margin-bottom: 22/@r;
+    }
+    h5{
+        font-size:30/@r;
+        margin-bottom: 60/@r;
+    }
+    img{
+        width: 1680/@r;
+    }
+    p{
+        font-size: 16/@r;
+        color: #B7B7B7;
+        padding-bottom: 93/@r;
+    }
+    
+}
+/*===================================================== 倾城宝贝 ========================================================*/ 
+
+.allure{
+    .title{
+        padding-top: 110/@r;
+        color: #7C7C7C;
+        margin-bottom: 120/@r;
+        h3{
+            text-align: center;
+            font-size: 60/@r;
+        }
+        p{
+            text-align: center;
+            font-size: 20/@r;
+            letter-spacing: 8/@r;
+            margin-left: 57/@r;
+            strong{
+                margin: 0 30/@r;
+            }
+            span{
+                display: inline-block;
+                width: 510/@r;
+                height: 3/@r;
+                background: #7c7c7c;
+                vertical-align: center;
+                margin-top: 10/@r;
+            }
+        }
+    }
+    .tab{
+       ol{
+           height: 132/@r;
+           width: 1280/@r;
+           background: #BCBCBC;
+           border-top-right-radius: 20/@r;
+           color: #fff;
+           overflow: hidden;
+           li{
+                width: 50%;
+                height: 100%;
+                border-top-right-radius: 20/@r;
+                float: left;
+                line-height: 132/@r;
+                font-size: 40/@r;
+                text-align: center;
+           }
+           .active{
+            background: #504959;
+            }
+            
+       }
+       .line{
+            height: 12/@r;
+            background: #504959;
+            margin-bottom: 14/@r;
+        }
+        .cont_wrap{
+            width: 1800/@r;
+            overflow: hidden;
+            .cont_move{
+                width: 3600/@r;
+                transition: 0.5s;
+                .age{
+                    width: 1800/@r;
+                    float: left;
+                }
+            }
+            .select{
+                padding: 0 30/@r 0 30/@r;
+                margin-bottom: 69/@r;
+                li{
+                    height: 110/@r;
+                    width: 542/@r;
+                    border: 1px dashed #504959;
+                    margin: 14/@r 13/@r;
+                    float: left;
+                    text-align: center;
+                    line-height: 110/@r;
+                }
+            }
+            .photo{
+                padding: 0 60/@r;
+                padding-bottom: 172/@r;
+                img{
+                    height: 520/@r;
+                    width: 822/@r;
+                    margin-bottom: 35/@r;
+                }
+               li{
+                   margin-bottom: 86/@r;
+                   h4{
+                       font-size: 34/@r;
+                   } 
+                   p{
+                       font-size: 26/@r;
+                   }
+               }
+                li:nth-of-type(2n+1){
+                    float: left;
+                }
+                li:nth-of-type(2n){
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+
+/*===================================================== 网络预约 ========================================================*/ 
+.reservation{
+    background: #2B2935;
+    padding: 160/@r 70/@r 190/@r 73/@r;
+    .title{
+        text-align: center;
+        margin-bottom: 120/@r;
+       h3{
+           font-size: 60/@r;
+           color: #fff;
+       }
+       p{
+           font-size:22/@r; 
+           color: #E8E7E9;
+       }
+       span{
+           display: inline-block;
+           width: 630/@r;
+           height: 1px ;
+           background: #E8E7E9;
+           vertical-align: center;
+       }
+       strong{
+            vertical-align: center;
+            display: inline-block;
+            margin: 0 50/@r;
+       }
+       
+    }
+    form{
+        label{
+            display: block;
+            height: 196/@r;
+            background: #3C3844;
+            border-radius: 10/@r;
+            margin-bottom: 64/@r;
+            position: relative;
+            span{
+                display: inline-block;
+                width: 500/@r;
+                font-size: 40/@r;
+                text-align: center;
+                color: #9C9AA3;
+                line-height: 196/@r;
+            }
+            input{
+                height: 100%;
+                width: 1100/@r;
+                background: #6A6475;
+                font-size: 56/@r;
+                color: #fff;
+            }
+            input[type=text]{
+                text-indent: 20/@r;
+                position: absolute;
+                right: 0;
+            }
+            input[type=text]:nth-last-of-type(1){
+                margin-bottom: 112/@r;
+            }
+        }
+        input[type=submit]{
+            width: 100%;
+            height: 200/@r;
+            background: #E86D85;
+            font-size: 48/@r;
+            color: #fff;
+            margin-bottom: 75/@r;
+        }
+       p{
+           text-align: center;
+           color: #666472;
+            font-size: 30/@r;
+       }
+    }
+}
+
+
+/*===================================================== 底部 ========================================================*/ 
+
+footer{
+    background: #38A8A6;
+    padding: 0 230/@r 100/@r 250/@r;
+    text-align: center;
+    color: #fff;
+    div:nth-of-type(1){
+        padding-top:220/@r;
+        h5{
+            font-size: 33/@r;
+        }
+        p{
+            font-size: 19/@r;
+            span{
+                display: inline-block;
+                width: 33/@r;
+                height: 1px;
+                background: #fff;
+                position: relative;
+                top: -16/@r;
+            }
+            strong{
+                margin: 0 14/@r;
+            }
+        }
+    }
+    h2{
+        font-size: 160/@r;
+        margin-bottom: 236/@r
+    }
+    ul{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 310/@r;
+        li{
+            width: 204/@r;
+            height: 270/@r;
+            background-image: url(../img/footer.png);
+            background-size: auto 200/@r;
+            background-repeat:no-repeat;  
+            a{
+                display: block;
+                width: 100%;
+                height:40/@r;
+                padding-top: 230/@r;
+                color: #fff;
+                font-size: 24/@r;
+            }
+        }
+        li:nth-of-type(2){
+            background-position:-250/@r 0; 
+        }
+        li:nth-of-type(3){
+            background-position:-500/@r 0; 
+        }
+        li:nth-of-type(4){
+            background-position:-750/@r 0; 
+        }
+        li:nth-of-type(5){
+            background-position:-1000/@r 0; 
+        }
+    }
+    .title{
+        strong{
+            font-weight: bold;
+        }
+        h2{
+            font-size:65/@r;
+            margin-bottom: 50/@r; 
+        }
+        p:nth-of-type(1){
+            font-size: 20/@r;
+            margin-bottom:60/@r;
+            span{
+                display: inline-block;
+                width: 130/@r;
+                height: 1px;
+                background: #fff;
+                position: relative;
+            }
+        }
+        p:nth-of-type(2){
+            font-size: 20/@r;
+            color: #296F73;
+        }
+    } 
+}
+
+
+
+
+/*---//////////////////////////////////////////////// 介绍页面  //////////////////////////////////////////--*/ 
+
+
+/*===================================================== 关于倾城宝贝 ========================================================*/ 
+
+.about{
+    width: 1580/@r;
+    height: 2030/@r;
+    padding: 244/@r 110/@r 0;
+    background: #E2E2E2;
+    text-align: center;
+    color: #38A8A6; 
+    .img{
+        display: inline-block;
+        width: 680/@r;
+        height:680/@r ;
+        border: 30/@r solid #fff;
+        border-radius:50%;
+        box-shadow: 1px 1px 60/@r 1px  #56545E;
+        position: relative;
+        z-index: 10;
+        margin-bottom: 168/@r;
+    }
+    img{
+        width: 680/@r;
+        position: relative;
+        z-index: 0;
+    }
+    div{
+        margin-bottom: 130/@r;
+        h3{
+            font-size:93/@r;
+        }
+        p{
+            font-size: 30/@r;
+            letter-spacing: 30/@r;
+            text-align: center;
+        }
+    }
+    p{
+        line-height: 112/@r;
+        font-size: 37/@r;
+        letter-spacing: 23/@r;
+        text-align: left;
+
+    }
+} 
+/*===================================================== 照片 ========================================================*/ 
+.intronduction_photo{
+    width: 1940/@r;
+    padding: 110/@r 140/@r;
+    margin-left: -70/@r;
+    box-shadow: 1px 1px 60/@r 1px inset #38A8A6; 
+    img{
+        margin-bottom: 10/@r;
+    }
+    li:nth-of-type(1){
+        width: 420/@r;
+        margin-left: 0;
+        img{
+            width: 420/@r;
+        }
+    }
+    li:nth-of-type(2),li:nth-of-type(3),li:nth-of-type(5){
+        width: 308/@r;
+        img{
+            width: 308/@r;
+        }
+    }
+    li:nth-of-type(4){
+        width: 222/@r;
+        img{
+            width: 222/@r;
+        }
+    }
+    li{
+        float: left;
+        margin-left: 16/@r;
+    }
+}
+
+/*---//////////////////////////////////////////////// 门店页面  //////////////////////////////////////////--*/ 
+
+
+
+.store_chain{
+    width: 1460/@r;
+    height: 2120/@r;
+    background: #E2E2E2;
+    text-align: center;
+    padding: 180/@r 170/@r;
+    .title{
+        color: #38A8A6;
+        margin-bottom: 140/@r;
+        h2{
+            font-size: 62/@r;
+        }
+        p{
+            font-size: 30/@r;
+            letter-spacing: 12/@r;
+            span{
+                margin: 0 28/@r;
+            }
+        }
+    }
+    ul{
+        line-height: 125/@r;
+        text-align: left;
+        padding-left: 70/@r; 
+        margin-bottom: 70/@r;
+        li{
+            height: 125/@r;
+            border-bottom: 1px solid #524F5B;
+            padding-left: 30/@r;
+            letter-spacing: 10/@r;
+        }
+        a{
+            color: #524F5B;
+        }
+        
+        strong{
+            font-size: 37/@r;
+            font-weight: bold;
+            margin-right: 30/@r;
+        }
+        span{
+            font-size: 30/@r;
+        }
+    }
+    ol{
+        li{
+            width: 22/@r;
+            height: 22/@r;
+            border-radius: 50%;
+            background:#9C9BA3;
+            margin: 19/@r auto;
+        }
+    }
+    .moreCity{
+        font-size: 47/@r;
+        color: #9C9BA3;
+    }
+}
+
+/*---//////////////////////////////////////////////// 活动页面  //////////////////////////////////////////--*/ 
+.event_1 img{
+    width: 1800/@r;
+    margin-bottom: 27/@r;
+}
+.event_text{
+    padding: 50/@r 0 55/@r;
+    background: #1D6EBD;
+    a{
+        color: #fff;
+    }
+    li:nth-of-type(1){
+        border-top:none ;
+    }li:nth-last-of-type(1){
+        border-bottom: none;
+    }
+    li{
+        padding: 50/@r 0 55/@r 175/@r;
+        border-top: 1px solid #649BD1;
+        border-bottom: 1px solid #1D5C99;
+        font-size: 56/@r;
+        letter-spacing: 10/@r;
+        span:nth-of-type(1){
+            display: inline-block;
+            vertical-align: top;
+        }
+        a{
+            display: inline-block;
+            vertical-align: top;
+        }
+        em{
+            display: inline-block;
+            width: 55/@r;
+            height: 55/@r;
+            border-radius: 50%;
+            background: #fff;
+            position: relative;
+            top: 10/@r;
+            margin-right: 10/@r;
+        }
+        strong{
+            font-weight:bold;
+            vertical-align: bottom;
+            margin-right: 55/@r;
+            vertical-align: top;
+        }
+        i{
+            font-style: normal;
+            font-size: 46/@r;
+        }
+    }
+}
+
+
+
+/*---//////////////////////////////////////////////// 客照详情  //////////////////////////////////////////--*/ 
+.allure .tab .cont_wrap .details img{
+    width: 1668/@r;
+    height: auto;
+}
+
+/*---//////////////////////////////////////////////// 评价  //////////////////////////////////////////--*/ 
+.evaluation,.tpage{
+    background: #E2E2E2;
+}
+.evaluation{
+    padding: 172/@r 92/@r 74/@r;
+    li{
+        border-bottom: 1px solid #828285;
+    }
+    a{
+        color: #333333;
+    }
+    img{
+        width: 420/@r;
+        height: 420/@r;
+        border-radius: 50%;
+    }
+    dt,dd{
+        float: left;
+    }
+    dd{
+        width: 1110/@r;
+        margin-left: 78/@r;
+        h6{
+            font-size: 38/@r;
+        }
+        div{
+            font-size: 28/@r;
+            color: #6D6D6D;
+            margin-bottom: 50/@r;
+        }
+        p{
+            line-height: 80/@r;
+            font: 32/@r;
+        }
+    }
+}
+.tpage{
+    padding:0 92/@r 192/@r;
+    font-size: 38/@r; 
+    color: #333;
+    span{
+        padding: 32/@r 60/@r;
+        border-radius:10/@r;
+        background: #CCCCCC;
+        float: left;
+    }
+    ol{
+        float: left;
+        margin: 0 45/@r;
+        li{
+            float: left;
+            line-height: 120/@r;
+            padding: 0 48/@r;
+            background: #ccc;
+            margin: 0 45/@r;
+            border-radius:10/@r;
+        }
+        .active{
+            background: #333333;
+            color: #ccc;
+        }
+    }
+}

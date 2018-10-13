@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.wrap {
+				width: 524px;
+				margin: 100px auto;
+			}
+			
+			.nav {
+				width: 505px;
+				height: 32px;
+				background: -webkit-linear-gradient(#739CBD, #215A9C);
+				border: 1px solid #C6D6E7;
+				border-bottom: none;
+				padding-top: 4px;
+			}
+			
+			.nav_wrap {
+				width: 522px;
+				padding: 1px;
+				background: #21639C;
+				border-radius: 5px;
+			}
+			
+			ul {
+				margin: 0;
+				list-style: none;
+				padding: 0;
+				width: 507px;
+				padding-left: 15px;
+			}
+			
+			.nav li,
+			.nav a {
+				float: left;
+				padding: 0 10px;
+				font: 14px/25px "微软雅黑";
+				border-radius: 5px;
+				margin-top: 3px;
+				color: #fff;
+				cursor: pointer;
+			}
+			
+			.nav li:hover {
+				background: #84A5C6;
+			}
+			
+			.nav span {
+				display: inline-block;
+				width: 2px;
+				height: 25px;
+				background: url(img/hover.png);
+				float: left;
+				margin-top: 5px;
+				margin: 0 5px;
+			}
+			
+			.nav a {
+				float: right;
+				text-decoration: none;
+			}
+			
+			.nav_wrap {
+				margin-bottom: 10px;
+			}
+			
+			.con>li {
+				height: 27px;
+				float: left;
+				display: none;
+				padding-top: 5px;
+				font: 12px/27px "微软雅黑";
+				text-indent: 1em;
+			}
+			
+			.con li:nth-of-type(1) {
+				width: 277px;
+				background: url(img/li_bg1.png);
+				margin-left: -20px;
+			}
+			
+			.con li:nth-of-type(2) {
+				width: 292px;
+				background: url(img/li_bg2.png);
+				margin-left: 50px;
+			}
+			
+			.con li:nth-of-type(3) {
+				width: 262px;
+				background: url(img/li_bg3.png);
+				margin-left: 28px;
+			}
+			
+			.con li:nth-of-type(4) {
+				width: 342px;
+				background: url(img/li_bg4.png);
+				margin-left: 90px;
+			}
+			
+			strong {
+				font-weight: normal;
+				cursor: pointer;
+				user-select: none;
+			}
+			
+			em {
+				display: inline-block;
+				width: 1px;
+				height: 12px;
+				background: #7B5AB5;
+				margin: -1px 4px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oWrap = document.getElementsByClassName('wrap')[0];
+				var oNav = oWrap.getElementsByClassName('nav')[0];
+				var aLi = oNav.getElementsByTagName('li');
+				var oCon = oWrap.getElementsByClassName('con')[0];
+				var aCLi = oCon.getElementsByTagName('li');
+				var timer = '';
+				for(var i = 0; i < aLi.length; i++) {
+					aCLi[i].index = i;
+					aLi[i].index = i;
+					aCLi[i].onmouseenter = aLi[i].onmouseenter = function() {
+						clearTimeout(timer);
+						for(var i = 0; i < aCLi.length; i++) {
+							aCLi[i].style.display = 'none'
+						}
+						aCLi[this.index].style.display = 'block';
+					}
+					aCLi[i].onmouseleave = aLi[i].onmouseleave = function() {
+						leave(this.index, aCLi[this.index])
+					}
+
+					function leave(index, obj) {
+						timer = setTimeout(function() {
+							aCLi[index].style.display = 'none';
+						}, 500)
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="nav_wrap">
+				<ul class="nav">
+					<li>首页</li><span></span>
+					<li>关于我们</li><span></span>
+					<li>作品</li><span></span>
+					<li>博客</li>
+					<a href="javaScript:;">>>更多</a>
+				</ul>
+			</div>
+			<ul class="con">
+				<li>
+					<strong>最新更新</strong><em></em>
+					<strong>活动</strong><em></em>
+					<strong>报名试听</strong><em></em>
+					<strong>学习反馈</strong><em></em>
+				</li>
+				<li>
+					<strong>妙味讲师</strong><em></em>
+					<strong>培训方式</strong><em></em>
+					<strong>培训思念</strong><em></em>
+					<strong>联系我们</strong><em></em>
+				</li>
+				<li>
+					<strong>般固</strong><em></em>
+					<strong>MATBY</strong><em></em>
+					<strong>留学e网</strong><em></em>
+					<strong>ECMall</strong><em></em>
+				</li>
+				<li>
+					<strong>JS教程</strong><em></em>
+					<strong>弹出层效果</strong><em></em>
+					<strong>3D球面标签云</strong><em></em>
+					<strong>window计算器</strong><em></em>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>

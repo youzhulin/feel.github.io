@@ -1,0 +1,745 @@
+/*===============================================resetCss==========================================================*/
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+p,
+dd {
+  margin: 0;
+}
+ol,
+ul {
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.clearfix::after {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+img {
+  vertical-align: top;
+  border: none;
+}
+strong {
+  font-weight: normal;
+}
+input {
+  padding: 0;
+  border: none;
+}
+/*===================================================indexStyle=======================================================*/
+/*---------------------------------------------------头部---------------------------------------------------------------*/
+header {
+  height: 3.83333333rem;
+  text-indent: -10000px;
+  background: #3c3844 url(../img/logo.png) no-repeat 7rem 0;
+  background-size: 15.91666667rem;
+}
+/*---------------------------------------------------导航---------------------------------------------------------------*/
+nav {
+  padding: 0.21666667rem;
+  background: #56545E;
+  font-size: 0.6rem;
+}
+nav a {
+  display: block;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+}
+nav li {
+  float: left;
+  width: 1.95rem;
+  padding: 0.3rem 1.41666667rem 0;
+  height: 1.45rem;
+  text-align: center;
+  border-left: 1px solid #AAA6B2;
+  border-right: 1px solid #24212B;
+}
+nav li span:nth-of-type(2) {
+  font-size: 0.23333333rem;
+  color: #A598A0;
+}
+nav li:nth-of-type(1) {
+  border-left: none;
+}
+nav li:nth-last-of-type(1) {
+  border-right: none;
+}
+/* =======================================================页面内容======================================================================== */
+.top {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-bottom: 0.16666667rem;
+}
+.contentwrap {
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/*---------------------------------------------------banner---------------------------------------------------------------*/
+.banner {
+  width: 100%;
+  height: 16.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.banner ul {
+  width: 90rem;
+  position: absolute;
+  left: 0;
+}
+.banner li {
+  float: left;
+}
+.banner ol {
+  position: absolute;
+  bottom: 0;
+}
+.banner ol li {
+  height: 0.28333333rem;
+  width: 9.98333333rem;
+  float: left;
+  background: #D0CDD1;
+}
+.banner ol .active {
+  background: #38a8a6;
+}
+.banner a {
+  display: block;
+  height: 16.5rem;
+}
+.banner img {
+  width: 30rem;
+  height: 16.5rem;
+}
+/*---------------------------------------------------全国连锁---------------------------------------------------------------*/
+.chain {
+  padding: 1.55rem 1.48333333rem 0;
+  text-align: center;
+  color: #7C7C7C;
+}
+.chain span {
+  display: inline-block;
+  margin: 0 0.45rem;
+}
+.chain h3 {
+  font-size: 0.9rem;
+}
+.chain p {
+  font-size: 0.43333333rem;
+  margin-bottom: 1.71666667rem;
+}
+.chain ul {
+  display: flex;
+  justify-content: space-around;
+  letter-spacing: 0.08333333rem;
+  margin-bottom: 1.8rem;
+}
+.chain ul img {
+  width: 5.58333333rem;
+  margin-bottom: 0.46666667rem;
+}
+.chain ul h4 {
+  font-size: 0.5rem;
+  color: #7C7C7C;
+  margin-bottom: 0.13333333rem;
+}
+.chain ul h5 {
+  font-size: 0.26666667rem;
+  color: #7C7C7C;
+}
+/*---------------------------------------------------千元礼包---------------------------------------------------------------*/
+.gift {
+  background: #EAEAEA;
+  overflow: hidden;
+}
+.gift img {
+  float: left;
+  height: 7.03333333rem;
+  margin-left: 2.58333333rem;
+  margin-right: 4.46666667rem;
+}
+.gift .title {
+  float: left;
+  text-align: center;
+  padding-top: 2.5rem;
+  color: #383838;
+}
+.gift .title h3 {
+  font-size: 1rem;
+}
+.gift .title p {
+  font-size: 0.3rem;
+}
+.gift span {
+  display: inline-block;
+  padding: 0 4.16666667rem;
+  background: #F40C28;
+  color: #fff;
+  line-height: 1.4rem;
+  font-size: 0.66666667rem;
+  transform: rotateZ(40deg) translate(6rem, -10rem);
+}
+/*---=================================================== 婴儿大照片 =======================================================--*/
+.baby {
+  text-align: center;
+  padding-top: 1.76666667rem;
+  color: #333333;
+  border-bottom: 0.78333333rem solid #dddddd;
+}
+.baby h3 {
+  font-size: 0.98333333rem;
+  margin-bottom: 0.36666667rem;
+}
+.baby h5 {
+  font-size: 0.5rem;
+  margin-bottom: 1rem;
+}
+.baby img {
+  width: 28rem;
+}
+.baby p {
+  font-size: 0.26666667rem;
+  color: #B7B7B7;
+  padding-bottom: 1.55rem;
+}
+/*===================================================== 倾城宝贝 ========================================================*/
+.allure .title {
+  padding-top: 1.83333333rem;
+  color: #7C7C7C;
+  margin-bottom: 2rem;
+}
+.allure .title h3 {
+  text-align: center;
+  font-size: 1rem;
+}
+.allure .title p {
+  text-align: center;
+  font-size: 0.33333333rem;
+  letter-spacing: 0.13333333rem;
+  margin-left: 0.95rem;
+}
+.allure .title p strong {
+  margin: 0 0.5rem;
+}
+.allure .title p span {
+  display: inline-block;
+  width: 8.5rem;
+  height: 0.05rem;
+  background: #7c7c7c;
+  vertical-align: center;
+  margin-top: 0.16666667rem;
+}
+.allure .tab ol {
+  height: 2.2rem;
+  width: 21.33333333rem;
+  background: #BCBCBC;
+  border-top-right-radius: 0.33333333rem;
+  color: #fff;
+  overflow: hidden;
+}
+.allure .tab ol li {
+  width: 50%;
+  height: 100%;
+  border-top-right-radius: 0.33333333rem;
+  float: left;
+  line-height: 2.2rem;
+  font-size: 0.66666667rem;
+  text-align: center;
+}
+.allure .tab ol .active {
+  background: #504959;
+}
+.allure .tab .line {
+  height: 0.2rem;
+  background: #504959;
+  margin-bottom: 0.23333333rem;
+}
+.allure .tab .cont_wrap {
+  width: 30rem;
+  overflow: hidden;
+}
+.allure .tab .cont_wrap .cont_move {
+  width: 60rem;
+  transition: 0.5s;
+}
+.allure .tab .cont_wrap .cont_move .age {
+  width: 30rem;
+  float: left;
+}
+.allure .tab .cont_wrap .select {
+  padding: 0 0.5rem 0 0.5rem;
+  margin-bottom: 1.15rem;
+}
+.allure .tab .cont_wrap .select li {
+  height: 1.83333333rem;
+  width: 9.03333333rem;
+  border: 1px dashed #504959;
+  margin: 0.23333333rem 0.21666667rem;
+  float: left;
+  text-align: center;
+  line-height: 1.83333333rem;
+}
+.allure .tab .cont_wrap .photo {
+  padding: 0 1rem;
+  padding-bottom: 2.86666667rem;
+}
+.allure .tab .cont_wrap .photo img {
+  height: 8.66666667rem;
+  width: 13.7rem;
+  margin-bottom: 0.58333333rem;
+}
+.allure .tab .cont_wrap .photo li {
+  margin-bottom: 1.43333333rem;
+}
+.allure .tab .cont_wrap .photo li h4 {
+  font-size: 0.56666667rem;
+}
+.allure .tab .cont_wrap .photo li p {
+  font-size: 0.43333333rem;
+}
+.allure .tab .cont_wrap .photo li:nth-of-type(2n+1) {
+  float: left;
+}
+.allure .tab .cont_wrap .photo li:nth-of-type(2n) {
+  float: right;
+}
+/*===================================================== 网络预约 ========================================================*/
+.reservation {
+  background: #2B2935;
+  padding: 2.66666667rem 1.16666667rem 3.16666667rem 1.21666667rem;
+}
+.reservation .title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.reservation .title h3 {
+  font-size: 1rem;
+  color: #fff;
+}
+.reservation .title p {
+  font-size: 0.36666667rem;
+  color: #E8E7E9;
+}
+.reservation .title span {
+  display: inline-block;
+  width: 10.5rem;
+  height: 1px ;
+  background: #E8E7E9;
+  vertical-align: center;
+}
+.reservation .title strong {
+  vertical-align: center;
+  display: inline-block;
+  margin: 0 0.83333333rem;
+}
+.reservation form label {
+  display: block;
+  height: 3.26666667rem;
+  background: #3C3844;
+  border-radius: 0.16666667rem;
+  margin-bottom: 1.06666667rem;
+  position: relative;
+}
+.reservation form label span {
+  display: inline-block;
+  width: 8.33333333rem;
+  font-size: 0.66666667rem;
+  text-align: center;
+  color: #9C9AA3;
+  line-height: 3.26666667rem;
+}
+.reservation form label input {
+  height: 100%;
+  width: 18.33333333rem;
+  background: #6A6475;
+  font-size: 0.93333333rem;
+  color: #fff;
+}
+.reservation form label input[type=text] {
+  text-indent: 0.33333333rem;
+  position: absolute;
+  right: 0;
+}
+.reservation form label input[type=text]:nth-last-of-type(1) {
+  margin-bottom: 1.86666667rem;
+}
+.reservation form input[type=submit] {
+  width: 100%;
+  height: 3.33333333rem;
+  background: #E86D85;
+  font-size: 0.8rem;
+  color: #fff;
+  margin-bottom: 1.25rem;
+}
+.reservation form p {
+  text-align: center;
+  color: #666472;
+  font-size: 0.5rem;
+}
+/*===================================================== 底部 ========================================================*/
+footer {
+  background: #38A8A6;
+  padding: 0 3.83333333rem 1.66666667rem 4.16666667rem;
+  text-align: center;
+  color: #fff;
+}
+footer div:nth-of-type(1) {
+  padding-top: 3.66666667rem;
+}
+footer div:nth-of-type(1) h5 {
+  font-size: 0.55rem;
+}
+footer div:nth-of-type(1) p {
+  font-size: 0.31666667rem;
+}
+footer div:nth-of-type(1) p span {
+  display: inline-block;
+  width: 0.55rem;
+  height: 1px;
+  background: #fff;
+  position: relative;
+  top: -0.26666667rem;
+}
+footer div:nth-of-type(1) p strong {
+  margin: 0 0.23333333rem;
+}
+footer h2 {
+  font-size: 2.66666667rem;
+  margin-bottom: 3.93333333rem;
+}
+footer ul {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5.16666667rem;
+}
+footer ul li {
+  width: 3.4rem;
+  height: 4.5rem;
+  background-image: url(../img/footer.png);
+  background-size: auto 3.33333333rem;
+  background-repeat: no-repeat;
+}
+footer ul li a {
+  display: block;
+  width: 100%;
+  height: 0.66666667rem;
+  padding-top: 3.83333333rem;
+  color: #fff;
+  font-size: 0.4rem;
+}
+footer ul li:nth-of-type(2) {
+  background-position: -4.16666667rem 0;
+}
+footer ul li:nth-of-type(3) {
+  background-position: -8.33333333rem 0;
+}
+footer ul li:nth-of-type(4) {
+  background-position: -12.5rem 0;
+}
+footer ul li:nth-of-type(5) {
+  background-position: -16.66666667rem 0;
+}
+footer .title strong {
+  font-weight: bold;
+}
+footer .title h2 {
+  font-size: 1.08333333rem;
+  margin-bottom: 0.83333333rem;
+}
+footer .title p:nth-of-type(1) {
+  font-size: 0.33333333rem;
+  margin-bottom: 1rem;
+}
+footer .title p:nth-of-type(1) span {
+  display: inline-block;
+  width: 2.16666667rem;
+  height: 1px;
+  background: #fff;
+  position: relative;
+}
+footer .title p:nth-of-type(2) {
+  font-size: 0.33333333rem;
+  color: #296F73;
+}
+/*---//////////////////////////////////////////////// 介绍页面  //////////////////////////////////////////--*/
+/*===================================================== 关于倾城宝贝 ========================================================*/
+.about {
+  width: 26.33333333rem;
+  height: 33.83333333rem;
+  padding: 4.06666667rem 1.83333333rem 0;
+  background: #E2E2E2;
+  text-align: center;
+  color: #38A8A6;
+}
+.about .img {
+  display: inline-block;
+  width: 11.33333333rem;
+  height: 11.33333333rem;
+  border: 0.5rem solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1rem 1px #56545e;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 2.8rem;
+}
+.about img {
+  width: 11.33333333rem;
+  position: relative;
+  z-index: 0;
+}
+.about div {
+  margin-bottom: 2.16666667rem;
+}
+.about div h3 {
+  font-size: 1.55rem;
+}
+.about div p {
+  font-size: 0.5rem;
+  letter-spacing: 0.5rem;
+  text-align: center;
+}
+.about p {
+  line-height: 1.86666667rem;
+  font-size: 0.61666667rem;
+  letter-spacing: 0.38333333rem;
+  text-align: left;
+}
+/*===================================================== 照片 ========================================================*/
+.intronduction_photo {
+  width: 32.33333333rem;
+  padding: 1.83333333rem 2.33333333rem;
+  margin-left: -1.16666667rem;
+  box-shadow: 1px 1px 1rem 1px inset #38a8a6;
+}
+.intronduction_photo img {
+  margin-bottom: 0.16666667rem;
+}
+.intronduction_photo li:nth-of-type(1) {
+  width: 7rem;
+  margin-left: 0;
+}
+.intronduction_photo li:nth-of-type(1) img {
+  width: 7rem;
+}
+.intronduction_photo li:nth-of-type(2),
+.intronduction_photo li:nth-of-type(3),
+.intronduction_photo li:nth-of-type(5) {
+  width: 5.13333333rem;
+}
+.intronduction_photo li:nth-of-type(2) img,
+.intronduction_photo li:nth-of-type(3) img,
+.intronduction_photo li:nth-of-type(5) img {
+  width: 5.13333333rem;
+}
+.intronduction_photo li:nth-of-type(4) {
+  width: 3.7rem;
+}
+.intronduction_photo li:nth-of-type(4) img {
+  width: 3.7rem;
+}
+.intronduction_photo li {
+  float: left;
+  margin-left: 0.26666667rem;
+}
+/*---//////////////////////////////////////////////// 门店页面  //////////////////////////////////////////--*/
+.store_chain {
+  width: 24.33333333rem;
+  height: 35.33333333rem;
+  background: #E2E2E2;
+  text-align: center;
+  padding: 3rem 2.83333333rem;
+}
+.store_chain .title {
+  color: #38A8A6;
+  margin-bottom: 2.33333333rem;
+}
+.store_chain .title h2 {
+  font-size: 1.03333333rem;
+}
+.store_chain .title p {
+  font-size: 0.5rem;
+  letter-spacing: 0.2rem;
+}
+.store_chain .title p span {
+  margin: 0 0.46666667rem;
+}
+.store_chain ul {
+  line-height: 2.08333333rem;
+  text-align: left;
+  padding-left: 1.16666667rem;
+  margin-bottom: 1.16666667rem;
+}
+.store_chain ul li {
+  height: 2.08333333rem;
+  border-bottom: 1px solid #524F5B;
+  padding-left: 0.5rem;
+  letter-spacing: 0.16666667rem;
+}
+.store_chain ul a {
+  color: #524F5B;
+}
+.store_chain ul strong {
+  font-size: 0.61666667rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+.store_chain ul span {
+  font-size: 0.5rem;
+}
+.store_chain ol li {
+  width: 0.36666667rem;
+  height: 0.36666667rem;
+  border-radius: 50%;
+  background: #9C9BA3;
+  margin: 0.31666667rem auto;
+}
+.store_chain .moreCity {
+  font-size: 0.78333333rem;
+  color: #9C9BA3;
+}
+/*---//////////////////////////////////////////////// 活动页面  //////////////////////////////////////////--*/
+.event_1 img {
+  width: 30rem;
+  margin-bottom: 0.45rem;
+}
+.event_text {
+  padding: 0.83333333rem 0 0.91666667rem;
+  background: #1D6EBD;
+}
+.event_text a {
+  color: #fff;
+}
+.event_text li:nth-of-type(1) {
+  border-top: none ;
+}
+.event_text li:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.event_text li {
+  padding: 0.83333333rem 0 0.91666667rem 2.91666667rem;
+  border-top: 1px solid #649BD1;
+  border-bottom: 1px solid #1D5C99;
+  font-size: 0.93333333rem;
+  letter-spacing: 0.16666667rem;
+}
+.event_text li span:nth-of-type(1) {
+  display: inline-block;
+  vertical-align: top;
+}
+.event_text li a {
+  display: inline-block;
+  vertical-align: top;
+}
+.event_text li em {
+  display: inline-block;
+  width: 0.91666667rem;
+  height: 0.91666667rem;
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+  top: 0.16666667rem;
+  margin-right: 0.16666667rem;
+}
+.event_text li strong {
+  font-weight: bold;
+  vertical-align: bottom;
+  margin-right: 0.91666667rem;
+  vertical-align: top;
+}
+.event_text li i {
+  font-style: normal;
+  font-size: 0.76666667rem;
+}
+/*---//////////////////////////////////////////////// 客照详情  //////////////////////////////////////////--*/
+.allure .tab .cont_wrap .details img {
+  width: 27.8rem;
+  height: auto;
+}
+/*---//////////////////////////////////////////////// 评价  //////////////////////////////////////////--*/
+.evaluation,
+.tpage {
+  background: #E2E2E2;
+}
+.evaluation {
+  padding: 2.86666667rem 1.53333333rem 1.23333333rem;
+}
+.evaluation li {
+  border-bottom: 1px solid #828285;
+}
+.evaluation a {
+  color: #333333;
+}
+.evaluation img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+.evaluation dt,
+.evaluation dd {
+  float: left;
+}
+.evaluation dd {
+  width: 18.5rem;
+  margin-left: 1.3rem;
+}
+.evaluation dd h6 {
+  font-size: 0.63333333rem;
+}
+.evaluation dd div {
+  font-size: 0.46666667rem;
+  color: #6D6D6D;
+  margin-bottom: 0.83333333rem;
+}
+.evaluation dd p {
+  line-height: 1.33333333rem;
+  font: 32/60rem;
+}
+.tpage {
+  padding: 0 1.53333333rem 3.2rem;
+  font-size: 0.63333333rem;
+  color: #333;
+}
+.tpage span {
+  padding: 0.53333333rem 1rem;
+  border-radius: 0.16666667rem;
+  background: #CCCCCC;
+  float: left;
+}
+.tpage ol {
+  float: left;
+  margin: 0 0.75rem;
+}
+.tpage ol li {
+  float: left;
+  line-height: 2rem;
+  padding: 0 0.8rem;
+  background: #ccc;
+  margin: 0 0.75rem;
+  border-radius: 0.16666667rem;
+}
+.tpage ol .active {
+  background: #333333;
+  color: #ccc;
+}

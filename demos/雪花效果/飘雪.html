@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        body{
+            background: url(img/img/bg2.jpg);
+            background-size:cover; 
+        }
+        img{
+            vertical-align: top;
+            border: none;
+            width: 100%;
+        }
+        .sonwMast{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            background: url(img/img/snow1.png),url(img/img/snow2.png);
+            animation: snowDown 5s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes snowDown{
+            from{
+                background-position:0 0,0 0; 
+            }to{
+                background-position:500px 800px,1000px 1500px; 
+            }
+        }
+        a{
+            color: #ff0;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <img src="img/img/bg2.jpg" alt=""> -->
+    <div class="sonwMast"></div>
+    <a href="http://www.baidu.com/">点不着点不着</a><br/>
+    <a href="http://www.baidu.com/">谁说点不着</a>
+</body>
+</html>

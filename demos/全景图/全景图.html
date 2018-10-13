@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body{
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .warp{
+            height: 100%;
+            perspective: 630px;
+            transform-style: preserve-3d;
+        }
+        .box{
+            width: 1024px;
+            height: 768px;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            margin-left: -512px;
+            margin-top: -384px;
+            transform-style: preserve-3d;
+        }
+        .box>div{
+            position:absolute;
+            top:0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform-style: preserve-3d;
+            background-size: cover;
+        }
+        .around{
+            height: 100%;
+            background: center center no-repeat;
+            transform-style: preserve-3d;
+        }
+        .around div{
+            position: absolute;
+            overflow: hidden;
+            height: 1024px;
+            transform-origin:center center center;
+            left: 50%;
+            margin: -10%;
+        }
+        .tb,.tb div{
+            width: 1280px;
+            height: 1280px;
+            background-size: cover;
+        }
+        .tb div:nth-of-type(1){
+            background-image:url(img1/neg-y.png);  
+            transform:rotateX(90deg) translateZ(-512px);
+        }
+        .around div:nth-of-type(1),
+        .around div:nth-of-type(2),
+        .around div:nth-of-type(3),
+        .around div:nth-of-type(4),
+        .around div:nth-of-type(5){
+            background-image:url('img1/1.png')
+        }
+        .around div:nth-of-type(6),
+        .around div:nth-of-type(7),
+        .around div:nth-of-type(8),
+        .around div:nth-of-type(9),
+        .around div:nth-of-type(10){
+            background-image:url('img1/2.png')
+        }
+        .around div:nth-of-type(11),
+        .around div:nth-of-type(12),
+        .around div:nth-of-type(13),
+        .around div:nth-of-type(14),
+        .around div:nth-of-type(15){
+            background-image:url('img1/3.png')
+        }
+        .around div:nth-of-type(16),
+        .around div:nth-of-type(17),
+        .around div:nth-of-type(18),
+        .around div:nth-of-type(19),
+        .around div:nth-of-type(20){
+            background-image:url('img1/4.png')
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <div class="box">
+            <div class="around">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="tb">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/cssTransform.js"></script>
+    <script>
+        var oAround = document.querySelector('.around');
+        console.log(oAround)
+        var aDiv = oAround.getElementsByTagName('div');
+        var start,last;
+        for(var i = 0 ; i < aDiv.length ; i++ ){
+            aDiv[i].style.width = (1024*4)/aDiv.length + 'px';
+            aDiv[i].style.backgroundPositionX = -(1024/(aDiv.length/4))*(i%(aDiv.length/4)) + 'px';
+            cssTransform(aDiv[i],'rotateY',i*(360/aDiv.length));
+            cssTransform(aDiv[i],'translateZ',640);
+        }
+       
+    </script>
+</body>
+</html>

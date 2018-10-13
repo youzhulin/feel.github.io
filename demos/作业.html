@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul,
+			li {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				height: 30px;
+				font: 14px/30px "微软雅黑";
+				cursor: pointer;
+			}
+			
+			ul {
+				width: 200px;
+				margin: 100px auto;
+			}
+			
+			li {
+				text-indent: 20px;
+			}
+			
+			.ccc {
+				background: #ccc;
+			}
+			
+			.hf {
+				background: #c00;
+			}
+			
+			.hfhover {
+				background: #f00;
+			}
+			
+			.bodyf {
+				background: #eee;
+			}
+			
+			.self {
+				background: #ccf;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var aLi = document.getElementsByTagName('li');
+				for(var i = 1 ; i < aLi.length-1 ; i++){
+					aLi[i].className = 'bodyf'
+				}
+				for(var i = 0; i < aLi.length; i++) {
+					if(i == 1) {
+						aLi[i].onmouseenter = function() {
+							for(var i = 1; i < aLi.length - 1; i++) {
+								aLi[i].className = 'ccc'
+							}
+							this.className = 'self';
+							this.previousElementSibling.className = 'hf'
+							
+						}
+					} else if(i == aLi.length - 2) {
+						aLi[i].onmouseenter = function() {
+							for(var i = 1; i < aLi.length - 1; i++) {
+								aLi[i].className = 'ccc'
+							}
+							this.className = 'self';
+							this.nextElementSibling.className = 'hf'
+							
+						}
+					} else if(i==0||i==aLi.length - 1){
+						aLi[i].onmouseenter = function(){
+							this.className = 'hfhover'
+						}
+					}else{
+						aLi[i].onmouseenter = function() {
+							for(var i = 1; i < aLi.length - 1; i++) {
+								aLi[i].className = 'ccc'
+							}
+							this.className = 'self';
+							this.previousElementSibling.className = this.nextElementSibling.className = 'bodyf'
+						}
+					}
+
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<ul>
+			<li class="hf">第1li</li>
+			<li>第2li</li>
+			<li>第3li</li>
+			<li>第4li</li>
+			<li>第5li</li>
+			<li>第6li</li>
+			<li>第7li</li>
+			<li>第8li</li>
+			<li>第9li</li>
+			<li>第10li</li>
+			<li>第11li</li>
+			<li class="hf">第12li</li>
+		</ul>
+	</body>
+
+</html>

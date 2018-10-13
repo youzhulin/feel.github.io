@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background: #00c;
+            margin: 10px;
+            float: left;
+            opacity: 0.3;
+            filter: alpha(opacity:30)
+        }
+    </style>
+    <script>
+        function changeColor(obj,itarget){
+            //每次调用该函数时，关闭该函数在该元素身上的定时器；
+            clearInterval(obj.timer);
+            //为元素定义定时器
+            obj.timer = setInterval(function(){
+                //定义一个可以可变速度
+                var speed = (itarget - obj.alpha)/6;
+                //速度取整
+                speed = speed > 0?Math.ceil(speed):Math.floor(speed);
+                //当元素的速度等于物体目标值时
+                if(obj.alpha == itarget){
+                    //关闭该元素身上的定时器
+                    clearInterval(obj.timer);
+                }else{
+                    //否则让该元素的变化速度接近目标
+                    obj.alpha += speed;
+                    //普通浏览器设置透明度
+                    obj.style.opacity = obj.alpha/100;
+                    //为IE浏览设置透明度
+                    obj.style.filter = "alpha(opacity:" + obj.alpha +")"
+                }
+            },30)
+        }
+        window.onload = function(){
+            var aDiv = document.getElementsByTagName("div");
+            for(var i = 0;i < aDiv.length;i++){
+                //为每个元素添加两个之定义属性：
+                aDiv[i].alpha = 30;//用于调用函数中的初始速度
+                aDiv[i].timer = null;//用于接收调用函数中的定时器
+                aDiv[i].onmouseover = function(){
+                    changeColor(this,100)
+                }
+                aDiv[i].onmouseout = function(){
+                    changeColor(this,30)
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>    
+</body>
+</html>

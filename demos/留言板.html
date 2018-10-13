@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			li {
+				line-height: 40px;
+				border-bottom: 1px dashed #ccc;
+				transition: 0.5s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<input type="text" name="" id="" value="" />
+		<ul></ul>
+		<script type="text/javascript">
+			var oInp = document.querySelector('input');
+			var oUl = document.querySelector('ul');
+			oInp.onkeyup = function(ev) {
+				var oEvent = ev || event;
+				if(oInp.value != '') {
+					if(oEvent.keyCode == 13 && oEvent.ctrlKey == true) {
+						var newLi = document.createElement('li');
+						newLi.innerHTML = oInp.value;
+						if(oUl.children[0]) {
+							oUl.insertBefore(newLi, oUl.children[0])
+						} else {
+							oUl.appendChild(newLi)
+						}
+						var heights = newLi.offsetHeight;
+						newLi.style.height = 0;
+						var tom = setInterval(function() {
+							if(newLi.offsetHeight >= heights) {
+								clearInterval(tom)
+							}
+							newLi.style.height = newLi.offsetHeight + 30 + 'px'
+						}, 30)
+					}
+
+				}
+			}
+		</script>
+	</body>
+
+</html>

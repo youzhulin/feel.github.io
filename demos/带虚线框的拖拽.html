@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: #0f0;
+            position: absolute;
+        }
+        .box{
+            border: 1px solid #ccc;
+            background: none;
+            position: absolute;
+        }
+    </style>
+    <script>
+        function mouseMove(ev) {
+            var oDiv = document.getElementsByClassName("box")[0];
+            var oEvent = ev || event;
+            var m = oEvent.clientX - X;
+            var n = oEvent.clientY - Y;
+            if (m < 0) {
+                m = 0
+            } else if (m > document.documentElement.clientWidth - oDiv.offsetWidth) {
+                m = document.documentElement.clientX - oDiv.offsetWidth
+            }
+            if (n < 0) {
+                n = 0
+            } else if (n > document.documentElement.clientHeight - oDiv.offsetHeight) {
+                n = document.documentElement.clientY - oDiv.offsetHeight
+            }
+            oDiv.style.left = m + "px";
+            oDiv.style.top = n + "px";
+        }
+        function mouseUp() {
+            var oDiv = document.getElementsByClassName("box")[0];
+            var oCon = document.getElementById("con")
+            this.onmouseup = "";
+            this.onmousemove = "";
+            oCon.style.left = oDiv.style.left;
+            oCon.style.top = oDiv.style.top;
+            document.body.removeChild(oDiv)
+            if (oDiv.releaseCapture) {
+                oDiv.releaseCapture();
+            }
+        }
+        window.onload = function () {
+            var oDiv = document.getElementsByTagName("div")[0];
+            oDiv.onmousedown = function (ev) {
+                var oEvent = ev || event;
+                X = oEvent.clientX - oDiv.offsetLeft;
+                Y = oEvent.clientY - oDiv.offsetTop;
+                var newDiv = document.createElement("div");
+                newDiv.className = "box"
+                document.body.appendChild(newDiv);
+                newDiv.style.left = oDiv.style.left;
+                newDiv.style.top = oDiv.style.top;
+                if (oDiv.releaseCapture) {
+                    newDiv.onmousemove = mouseMove
+                    newDiv.onmouseup = mouseUp
+                        oDiv.setCapture();
+                } else {
+                    document.onmousemove = mouseMove
+                    document.onmouseup = mouseUp;
+                }
+                return false;//阻止火狐默认bug
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="con"></div>
+</body>
+
+</html>

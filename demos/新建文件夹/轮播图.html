@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body {
+				margin: 0;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			img {
+				vertical-align: top;
+			}
+			
+			.wrap {
+				width: 100%;
+				position: relative;
+				height: 400px;
+				min-width: 1000px;
+				overflow: hidden;
+			}
+			
+			ul {
+				width: 6000px;
+				position: absolute;
+				z-index: 0;
+			}
+			
+			ul li {
+				float: left;
+			}
+			
+			ul li img {
+				position: relative;
+			}
+			
+			.list {
+				width: 100%;
+				/*background: #fff;*/
+				position: absolute;
+				bottom: 0;
+				z-index: 1;
+				font-size: 0;
+				text-align: center;
+			}
+			
+			.list span {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				background: #06f;
+				margin: 5px;
+			}
+			
+			.list .atcive,
+			.list span:hover {
+				background: #FFCC33;
+			}
+		</style>
+		<script src="banner/move.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oWrap = document.getElementsByClassName('wrap')[0];
+				var oBanner = oWrap.getElementsByClassName('banner')[0];
+				var aLi = oBanner.getElementsByTagName('li');
+				var aImg = document.getElementsByTagName('img');
+				var oList = oWrap.getElementsByClassName('list')[0];
+				var oListSpan = oWrap.getElementsByTagName('span');
+				var oImgW = aImg[0].offsetWidth;
+				oBanner.style.width = oImgW * aLi.length + 'px';
+				window.onresize = cetenter;
+				cetenter()
+
+				function cetenter() {
+					var viewW = document.documentElement.clientWidth || document.body.clientWidth;
+					if(viewW > 1000) {
+						for(var i = 0; i < aLi.length; i++) {
+							aImg[i].style.left = -(oImgW - viewW) / 2 + 'px'
+						}
+					}
+				}
+				for(var i = 0; i < oListSpan.length; i++) {
+					oListSpan[i].index = i;
+					oListSpan[i].onclick = function() {
+						bannerMove(this.index,this.index)
+					}
+				}
+				var num = 0;
+				var num2 = 0;
+				setInterval(function(){
+					num++;
+					num2++;
+					if(num == oListSpan.length){
+						aLi[0].style.position = 'relative';
+						aLi[0].style.left = oImgW*aLi.length + 'px';
+						num = 0;
+					}
+					bannerMove(num,num2)
+				}, 3000)
+
+				function bannerMove(index1,index2) {
+					for(var i = 0; i < oListSpan.length; i++) {
+						oListSpan[i].className = '';
+					}
+					if(index2 > oListSpan.length-1){
+						oListSpan[0].className = 'atcive';
+					}else{
+						oListSpan[index2].className = 'atcive';
+					}
+					startMove(oBanner, {
+						left: -oImgW * index2
+					},function(){
+						if(index1 == 0){
+							aLi[0].style.position = 'static';
+							oBanner.style.left = 0;
+							num2 = 0;
+						}
+					})
+					
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<ul class="banner">
+				<li>
+					<a href="javaScript:;"><img src="banner/01.jpg" /></a>
+				</li>
+				<li>
+					<a href="javaScript:;"><img src="banner/02.jpg" /></a>
+				</li>
+				<li>
+					<a href="javaScript:;"><img src="banner/03.jpg" /></a>
+				</li>
+			</ul>
+			<div class="list">
+				<span class="atcive"></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+	</body>
+
+</html>

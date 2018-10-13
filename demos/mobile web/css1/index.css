@@ -1,0 +1,189 @@
+/*===============================================resetCss==========================================================*/
+body,
+h1,
+h3,
+h4,
+h5,
+ul,
+ol {
+  margin: 0;
+}
+ol,
+ul {
+  padding: 0;
+}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.clearfix::after {
+  content: '.';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+img {
+  vertical-align: top;
+  border: none;
+}
+/*===================================================indexStyle=======================================================*/
+/*---------------------------------------------------头部---------------------------------------------------------------*/
+header {
+  height: 230 0.05555556%;
+  text-indent: -10000px;
+  background: #3c3844 url(../img/logo.png) no-repeat 420 0.05555556% 0;
+  background-size: 955 0.05555556%;
+}
+/*---------------------------------------------------导航---------------------------------------------------------------*/
+nav {
+  padding: 13 0.05555556%;
+  background: #56545E;
+  font-size: 36 0.05555556%;
+}
+nav a {
+  color: #fff;
+}
+nav li {
+  float: left;
+  width: 117 0.05555556%;
+  padding: 18 0.05555556% 85 0.05555556% 0;
+  height: 87 0.05555556%;
+  text-align: center;
+  border-left: 1px solid #AAA6B2;
+  border-right: 1px solid #24212B;
+}
+nav li span:nth-of-type(2) {
+  font-size: 14 0.05555556%;
+  color: #A598A0;
+}
+nav li:nth-of-type(1) {
+  border-left: none;
+}
+nav li:nth-last-of-type(1) {
+  border-right: none;
+}
+/* =======================================================页面内容======================================================================== */
+.top {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-bottom: 10 0.05555556%;
+}
+.contentwrap {
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+/*---------------------------------------------------banner---------------------------------------------------------------*/
+.banner {
+  width: 100%;
+  height: 990 0.05555556%;
+  position: relative;
+  overflow: hidden;
+}
+.banner ul {
+  width: 5400 0.05555556%;
+  position: absolute;
+  left: 0;
+}
+.banner li {
+  float: left;
+}
+.banner ol {
+  position: absolute;
+  bottom: 0;
+}
+.banner ol li {
+  height: 17 0.05555556%;
+  width: 599 0.05555556%;
+  float: left;
+  background: #D0CDD1;
+}
+.banner ol .active {
+  background: #38a8a6;
+}
+.banner a {
+  display: block;
+  height: 990 0.05555556%;
+}
+.banner img {
+  width: 1800 0.05555556%;
+  height: 990 0.05555556%;
+}
+/*---------------------------------------------------全国连锁---------------------------------------------------------------*/
+.chain {
+  padding: 93 0.05555556% 89 0.05555556% 0;
+  text-align: center;
+  color: #7C7C7C;
+}
+.chain span {
+  display: inline-block;
+  margin: 0 27 0.05555556%;
+}
+.chain h3 {
+  font-size: 54 0.05555556%;
+}
+.chain p {
+  font-size: 26 0.05555556%;
+  margin-bottom: 103 0.05555556%;
+}
+.chain ul {
+  display: flex;
+  justify-content: space-around;
+  letter-spacing: 5 0.05555556%;
+  margin-bottom: 108 0.05555556%;
+}
+.chain ul img {
+  width: 335 0.05555556%;
+  margin-bottom: 28 0.05555556%;
+}
+.chain ul h4 {
+  font-size: 30 0.05555556%;
+  color: #7C7C7C;
+  margin-bottom: 8 0.05555556%;
+}
+.chain ul h5 {
+  font-size: 16 0.05555556%;
+  color: #7C7C7C;
+}
+/*---------------------------------------------------千元礼包---------------------------------------------------------------*/
+.gift {
+  background: #EAEAEA;
+  overflow: hidden;
+}
+.gift img {
+  float: left;
+  height: 422 0.05555556%;
+  margin-left: 155 0.05555556%;
+  margin-right: 268 0.05555556%;
+}
+.gift .title {
+  float: left;
+  text-align: center;
+  padding-top: 150 0.05555556%;
+  color: #383838;
+}
+.gift .title h3 {
+  font-size: 60 0.05555556%;
+}
+.gift .title p {
+  font-size: 18 0.05555556%;
+}
+.gift span {
+  display: inline-block;
+  padding: 0 250 0.05555556%;
+  background: #F40C28;
+  color: #fff;
+  line-height: 84 0.05555556%;
+  font-size: 40 0.05555556%;
+  transform: rotateZ(40deg) translate(200 0.05555556%, -100 0.05555556%);
+}

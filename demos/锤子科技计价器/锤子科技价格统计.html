@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			h3,
+			dl,
+			dd,
+			p {
+				margin: 0;
+			}
+			
+			img {
+				border: none;
+				vertical-align: top;
+			}
+			
+			;
+			strong {
+				font-weight: normal;
+			}
+			
+			em {
+				font-style: normal;
+			}
+			
+			input {
+				margin: 0;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			
+			.wrap {
+				width: 1218px;
+				margin: 50px auto;
+			}
+			
+			h3 {
+				width: 1218px;
+				font: normal 16px/60px "微软雅黑";
+				background: -webkit-linear-gradient(#FFFFFF 0%, #F3F3F3 50%, #ECECEC 100%);
+				border: 1px solid #D4D4D4;
+				box-shadow: 0px 1px 6px 0px #D4D4D4;
+				text-indent: 30px;
+				border-radius: 3px 3px 0 0;
+			}
+			
+			dt {
+				font-size: 0;
+				background: #EEEEEE;
+				border: 1px solid #DBDBDB;
+			}
+			
+			dt span {
+				display: inline-block;
+				font: 12px/38px "微软雅黑";
+			}
+			
+			dt span:nth-of-type(1) {
+				width: 700px;
+				text-indent: 30px;
+			}
+			
+			dt span:nth-of-type(2) {
+				width: 110px;
+				text-indent: 25px;
+			}
+			
+			dt span:nth-of-type(3) {
+				width: 180px;
+				text-indent: 50px;
+			}
+			
+			dt span:nth-of-type(4) {
+				width: 130px;
+				text-indent: 60px;
+			}
+			
+			dt span:nth-of-type(5) {
+				width: 94px;
+				text-indent: 14px;
+			}
+			
+			dd {
+				line-height: 120px;
+				border: 1px dashed #EEEEEE;
+				font-size: 0;
+			}
+			
+			label {
+				margin: 0 25px 0 33px;
+				position: relative;
+				overflow: hidden
+			}
+			
+			label span {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border: 3px solid #ccc;
+				border-radius: 50%;
+			}
+			
+			label input {
+				position: absolute;
+				left: -1000px;
+			}
+			
+			label input:checked~span {
+				background: #f0f;
+			}
+			label input .active{
+				background: #f0f;
+				color: #666;
+			}
+			dd img {
+				margin-top: 30px;
+				border: 1px solid #F0F0F0;
+				margin-right: 20px;
+			}
+			
+			dd>a {
+				display: inline-block;
+				width: 630px;
+				color: #000;
+			}
+			
+			dd>a span {
+				display: block;
+				font-size: 12px;
+				line-height: 12px;
+				color: #999999;
+			}
+			
+			dd a strong {
+				font-size: 16px;
+				font-weight: normal;
+			}
+			
+			dd>em {
+				display: inline-block;
+				width: 140px;
+				font-size: 16px;
+			}
+			
+			dd>span {
+				display: inline-block;
+				width: 180px;
+				font-size: 16px;
+			}
+			
+			dd>span button {
+				width: 24px;
+				height: 24px;
+				text-align: center;
+				line-height: 24px;
+				border: 1px solid #F0F0F0;
+				border-radius: 50%;
+				background: none;
+				box-shadow: 0 1px 3px 1px #F0F0F0;
+				cursor: pointer;
+				outline: none;
+			}
+			
+			dd>span button:hover {
+				box-shadow: 0 1px 10px 2px #F0F0F0;
+			}
+			
+			dd>span a {
+				margin: 10px;
+			}
+			
+			dd>strong {
+				display: inline-block;
+				width: 100px;
+				font-size: 16px;
+			}
+			
+			.foot {
+				height: 70px;
+				width: 1216px;
+				border: 1px solid #E9E9E9;
+				border-radius: 0 0 3px 3px;
+				background: #FBFBFB;
+				padding-top: 20px;
+				box-shadow: 0 -2px 6px 0 #E9E9E9;
+			}
+			
+			.foot label {
+				float: left;
+				line-height: 70px;
+			}
+			
+			.foot>div {
+				float: right;
+				height: 90px;
+				width: 516px;
+				font-size: 12px;
+			}
+			
+			.foot>div .selec,
+			.foot>div .price,
+			foot>div a {
+				float: left;
+				text-align: right;
+			}
+			
+			.foot>div .price {
+				width: 115px;
+				padding: 0 25px;
+			}
+			
+			.foot>div .selec {
+				width: 120px;
+				padding: 0 25px;
+			}
+			
+			.foot em {
+				display: inline-block;
+				width: 1px;
+				height: 40px;
+				background: #E1E1E1;
+				float: left;
+			}
+			
+			.foot a {
+				display: inline-block;
+				margin-left: ;
+			}
+			
+			.foot a button {
+				display: inline-block;
+				width: 130px;
+				height: 50px;
+				background: #C4C4C4;
+				border-radius: 10px;
+				color: #EDEDED;
+				margin-left: 30px;
+				border: none;
+			}
+			.del{
+				display: none;
+				cursor: pointer;
+			}
+			dd:hover .del{
+				display: inline-block;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var aDd = document.getElementsByTagName('dd');//所有dd
+				for(var i = 0; i < aDd.length; i++) {
+					//给所有的dd注册priceCalculation(aDd[i])函数
+					priceCalculation(aDd[i])
+				};
+				//价格计算函数
+				function priceCalculation(oDd) {
+					var aBtn = oDd.getElementsByTagName('button');//dd中的所有按钮
+					var oPiece = oDd.getElementsByClassName('num')[0];//产品数量
+					var num = 0;//产品数量变化值
+					var uPrice = oDd.getElementsByClassName('uPrice')[0];//单价
+					var price = parseFloat(uPrice.innerHTML);//单价的值
+					var subtotal = oDd.getElementsByClassName('subtotal')[0];//小计
+					var seling = document.getElementsByClassName('seling')[0];//已选择产品
+					aBtn[1].onclick = function() {//增加按钮注册点击事件
+						num++;//产品数量
+						oPiece.innerHTML = num;//产品数量
+						seling.innerHTML = num;//已选择产品
+						subtotal.innerHTML = (price * num).toFixed(2);//小计
+						SettlementBtn(this.parentNode.parentNode)
+					}
+					aBtn[0].onclick = function() {//减少按钮注册点击事件
+						if(num <= 0) {//当产品数量低于0件时
+							num = 0//产品数量只能为0件
+						} else {//否则
+							num--;//产品数量减少
+						}
+						oPiece.innerHTML = num;//产品数量
+						seling.innerHTML = num;//已选择产品
+						subtotal.innerHTML = (price * num).toFixed(2);//小计
+						SettlementBtn(this.parentNode.parentNode)
+					}
+				};
+				//总价计算函数
+				function totalP() {
+					var oFoot = document.getElementsByClassName('foot')[0]//底部
+					var seled = oFoot.getElementsByClassName('seled')[0];//总共选择的数量
+					var totPrice = oFoot.getElementsByClassName('totPrice')[0];//应付金额
+					var total = document.getElementsByClassName('subtotal');//小计
+					var oPiece = document.getElementsByClassName('num');//数量
+					var num1 = 0;
+					var num2 = 0;
+					for(var i = 0; i < total.length; i++) {
+						num1 += parseFloat(total[i].innerHTML);//小计
+						num2 += parseInt(oPiece[i].innerHTML);//产品数量
+					};
+					totPrice.innerHTML = num1;//小计
+					seled.innerHTML = num2;//产品数量
+				};
+				var aDel = document.getElementsByClassName('del');//删除按钮
+				for(var i = 0 ; i < aDel.length ; i++){
+					aDel[i].onclick = function(){//为删除按钮注册点击事件
+						this.parentNode.remove()//删除执行体所在的dd
+						totalP();
+					}
+				}
+				var aDdInp = document.querySelectorAll('dd label input');
+				var allSel = document.querySelector('.foot label input');
+				var aDd = document.getElementsByTagName('dd');
+				allSel.onclick = function(){
+					if(this.checked){
+						for(var i = 0 ; i < aDdInp.length ; i++){
+							aDdInp[i].checked = true;
+						}
+					}else{
+						for(var i = 0 ; i < aDdInp.length ; i++){
+							aDdInp[i].checked = false;
+						}
+					};
+					for(var i = 0 ; i < aDd.length ; i++){
+						SettlementBtn(aDd[i])
+					}
+				}
+				for(var i = 0 ; i < aDdInp.length ; i++){
+					aDdInp[i].onclick = function(){
+						var onoff = true;
+						if(!this.checked){
+							allSel.checked = false;
+						}else{
+							for(var i = 0 ; i < aDdInp.length ; i++){
+								if(!aDdInp[i].checked){
+									onoff = false;
+								}
+								if(onoff == true){
+									allSel.checked = true;
+								}else{
+									allSel.checked = false;
+								}
+							}
+						};
+						SettlementBtn(this.parentNode.parentNode);
+					};
+				};
+				function SettlementBtn(obj){
+					var objNum = obj.getElementsByClassName('num')[0];
+					var objInp = obj.getElementsByTagName('input')[0];
+					var SettFoot = document.getElementsByClassName('foot')[0];
+					var footInp = SettFoot.getElementsByTagName('input')[0];
+					var SettBtn = SettFoot.getElementsByTagName('button')[0];
+					var aDdInp= document.querySelectorAll('dd label input');
+					var aDdNum= document.querySelectorAll('dd span a');
+					var on = true;
+					if(objNum.innerHTML != 0&& objInp.checked == true){
+						SettBtn.style.background = '#66f';
+						totalP();//总价计算
+					}else{
+						for(var i = 0 ; i < aDdInp.length ; i++){
+							if(aDdInp[i].checked == true&&aDdNum[i].innerHTML != 0){
+								SettBtn.style.background = '#66f';
+								totalP();//总价计算
+								return;
+							}else{
+								SettBtn.style.background = '';
+								totalP();
+							}
+							
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<h3>购物清单</h3>
+			<dl>
+				<dt><span>商品清单</span><span>单价</span><span>数量</span><span>小计</span><span>操作</span></dt>
+				<dd>
+					<label><input type="checkbox"/><span></span></label>
+					<a href="javaScript:;">
+						<img src="img/1.jpg" />
+						<strong><em>坚果Pro钢化玻璃手感膜（后壳用）</em></strong>
+					</a>
+					<em><span>￥</span><span class="uPrice">100.00</span></em>
+					<span><button>-</button><a href="javaScript:;" class="num">0</a><button>+</button></span>
+					<strong class="subtotal">0</strong>
+					<button class="del">删除</button>
+				</dd>
+				<dd>
+					<label><input type="checkbox"/><span></span></label>
+					<a href="javaScript:;">
+						<img src="img/1.jpg" />
+						<strong><em>坚果Pro钢化玻璃手感膜（后壳用）</em></strong>
+					</a>
+					<em><span>￥</span><span class="uPrice">100.00</span></em>
+					<span><button>-</button><a href="javaScript:;" class="num">0</a><button>+</button></span>
+					<strong class="subtotal">0</strong>
+					<button class="del">删除</button>
+				</dd>
+				<dd>
+					<label><input type="checkbox"/><span></span></label>
+					<a href="javaScript:;">
+						<img src="img/1.jpg" />
+						<strong><em>坚果Pro钢化玻璃手感膜（后壳用）</em></strong>
+					</a>
+					<em><span>￥</span><span class="uPrice">100.00</span></em>
+					<span><button>-</button><a href="javaScript:;" class="num">0</a><button>+</button></span>
+					<strong class="subtotal">0</strong>
+					<button class="del">删除</button>
+				</dd>
+				<dd>
+					<label><input type="checkbox"/><span></span></label>
+					<a href="javaScript:;">
+						<img src="img/1.jpg" />
+						<strong><em>坚果Pro钢化玻璃手感膜（后壳用）</em></strong>
+					</a>
+					<em><span>￥</span><span class="uPrice">100.00</span></em>
+					<span><button>-</button><a href="javaScript:;" class="num">0</a><button>+</button></span>
+					<strong class="subtotal">0</strong>
+					<button class="del">删除</button>
+				</dd>
+			</dl>
+			<div class="foot">
+				<label><input type="checkbox"/><span></span></label>
+				<div>
+					<div class="selec">
+						<p>已选择<span class="seling">0</span>件商品</p>
+						<p>共计<span class="seled">8</span>件商品</p>
+					</div>
+					<em></em>
+					<div class="price">
+						<p>应付总额：￥<span class="totPrice">0</span></p>
+						<p>应付总额不含运费</p>
+					</div>
+					<a href="javaScript:;"><button>现在结算</button></a>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

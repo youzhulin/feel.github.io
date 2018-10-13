@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .line{
+        width: 500px;
+        height: 20px;
+        background: #ccc;
+        position: relative;
+    }
+    .btn{
+        width: 20px;
+        height: 20px;
+        background:#00f;
+        position: absolute;
+    }
+    .change{
+        background: red;
+    }
+</style>
+<script>
+    window.onload = function(){
+        var oLine = document.getElementsByClassName("line")[0];
+        var oBtn = document.getElementsByClassName("btn")[0];
+        var oChange = document.getElementsByClassName("change")[0];        
+        function mouseMove(ev){
+            var oEvent = ev||event;
+            var L = oEvent.clientX - X ;
+            if(L<0){
+                L = 0
+            }else if(L > oLine.offsetWidth - oBtn.offsetWidth){
+                L = oLine.offsetWidth - oBtn.offsetWidth;
+            }
+            oBtn.style.left = L +"px";
+            var prop =L/(oLine.offsetWidth - oBtn.offsetWidth);
+            oChange.style.width = (500*prop) + "px";
+            oChange.style.height = (500*prop) + "px"
+        }
+        function mouseUp(){
+            this.onmouseup = "";
+            this.onmousemove = "";
+            if(oBtn.releaseCapture){
+                oBtn.releaseCapture();
+            }
+        }
+        oBtn.onmousedown = function(ev){
+            var oEvent = ev||event;
+            X = oEvent.clientX - oBtn.offsetLeft;
+            Y = oEvent.clientY - oBtn.offsetLeft;
+            if(oBtn.setCapture){
+                oBtn.onmousemove = mouseMove;
+                oBtn.onmouseup = mouseUp;
+            }else{
+                document.onmousemove = mouseMove;
+                document.onmouseup = mouseUp;
+            }
+        }
+    }
+</script>
+<body>
+    <div class="line">
+        <div class="btn"></div>
+    </div>
+    <div class="change"></div>
+</body>
+</html>

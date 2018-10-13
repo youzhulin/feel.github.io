@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.clearfix:after {
+				content: '.';
+				height: 0;
+				display: block;
+				visibility: hidden;
+				clear: both;
+			}
+			
+			.clearfix {
+				*zoom: 1;
+			}
+			
+			.wrap {
+				width: 1200px;
+			}
+			
+			.wrap div {
+				float: left;
+				margin: 10px;
+			}
+			
+			.left,
+			.right {
+				width: 300px;
+				border: 5px solid #0000FF;
+				border-radius: 10px;
+				padding: 10px;
+			}
+			
+			.left div,
+			.right div {
+				width: 80px;
+				background: #f0f;
+				border-radius: 10px;
+				text-align: center;
+				margin: 0 110px;
+			}
+			
+			.centers {
+				width: 160px;
+			}
+			
+			.centers button {
+				width: 160px;
+				margin-bottom: 20px;
+			}
+			
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				overflow: hidden;
+			}
+			
+			li {
+				width: 10px;
+				height: 10px;
+				background: #0FF0F0;
+				border-radius: 5px;
+				float: left;
+				margin: 5px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oLeft = document.getElementsByClassName('left')[0];
+				var oCenters = document.getElementsByClassName('centers')[0];
+				var oRight = document.getElementsByClassName('right')[0];
+				var oLP = oLeft.getElementsByTagName('p')[0];
+				var oLPSapn = oLeft.getElementsByTagName('span')
+				var oLRP = oRight.getElementsByTagName('p')[0];
+				var oLRSapn = oRight.getElementsByTagName('span')
+				var aBtn = oCenters.getElementsByTagName('button');
+				var timer = '';
+				var timer1 = '';
+				var oCLi = oCenters.getElementsByTagName('li');
+				oLPSapn[0].innerHTML = oLP.innerHTML.length;
+				oLPSapn[1].innerHTML = oLP.innerHTML.length;
+				oLRSapn[0].innerHTML = oLRP.innerHTML.length;
+				oLRSapn[1].innerHTML = oLP.innerHTML.length;
+				var n = 0;
+				aBtn[0].onclick = function() {
+					noReSet(oLP)
+					if(oLRP.innerHTML.length == 0) {
+						handling(oLP, oLRP,oLPSapn[0],oLRSapn[0]);
+						marquee();
+					}
+				};
+				aBtn[1].onclick = function() {
+					noReSet(oLRP)
+					if(oLP.innerHTML.length == 0) {
+						handling(oLRP, oLP,oLRSapn[0],oLPSapn[0]);
+						marquee();
+					}
+				};
+
+				function noReSet(obj) {
+					if(obj.innerHTML.length == 0) {
+						clearInterval(timer)||clearInterval(timer1);
+						for(var i = 0; i < oCLi.length; i++) {
+							oCLi[i].style.background = '#0FF0F0'
+						}
+					}
+				}
+				function marquee() {
+					clearInterval(timer1)
+					timer1 = setInterval(function() {
+						n++;
+						for(var i = 0; i < oCLi.length; i++) {
+							oCLi[i].style.background = '#0FF0F0'
+						}
+						oCLi[n % oCLi.length].style.background = '#f00'
+					}, 30)
+				}
+				function handling(obj1, obj2,obj3,obj4) {
+					clearInterval(timer)
+					timer = setInterval(function() {
+						console.log(obj1.innerHTML.length)
+						var str = obj1.innerHTML;
+						obj1.innerHTML = str.substring(1);
+						obj2.innerHTML += str.charAt();
+						noReSet(obj1);
+						noReSet(obj2);
+						obj3.innerHTML = obj1.innerHTML.length;
+						obj4.innerHTML = obj2.innerHTML.length
+					}, 30)
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="left">
+				<p>
+					5年来，共青团坚决贯彻党中央要求，牢牢把握保持和增强政治性、先进性、群众性的前进方向，紧紧围绕团的根本任务、政治责任、工作主线，奋发改革、锐意进取、真抓实干，团的政治建设得到根本性加强，政治站位切实提高，政治功能更加凸显，紧紧跟党走的行动更加自觉。思想政治主旋律更加高扬，团建科学化水平不断提升，从严治团取得扎实进展，青年生力军作用更加彰显，共青团伙伴队伍日益壮大，青年发展大格局正在形成，共青团在改革新征程中展现出新的时代面貌。
+				</p>
+				<div><span>123</span>/<span>234</span></div>
+			</div>
+			<div class="centers">
+				<button>→</button>
+				<button>←</button>
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="right">
+				<p></p>
+				<div><span>0</span>/<span>234</span></div>
+			</div>
+		</div>
+	</body>
+
+</html>

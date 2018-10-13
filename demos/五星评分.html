@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			dl,
+			dd {
+				margin: 0;
+			}
+			
+			.box {
+				width: 550px;
+				margin: 100px auto;
+				position: relative;
+			}
+			
+			.box dl {
+				height: 40px;
+				line-height: 40px;
+				border: 1px solid #000000;
+				padding: 10px;
+			}
+			
+			.box span {
+				color: red;
+			}
+			
+			.box dd,
+			.box dt {
+				float: left;
+			}
+			
+			.box dd {
+				line-height: 40px;
+				font-size: 0;
+			}
+			
+			.box img {
+				width: 20px;
+				height: 22px;
+				vertical-align: middle;
+				cursor: pointer;
+			}
+			
+			.box em {
+				margin-left: 12px;
+				font-style: normal;
+				font: 700 16px/40px "微软雅黑";
+				color: orange;
+			}
+			
+			#info {
+				width: 240px;
+				height: 20px;
+				background: #f0f0f0;
+				font: 12px/20px "微软雅黑";
+				text-indent: 10px;
+				color: red;
+				position: absolute;
+				left: 200px;
+				top: 20px;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				var oBox = document.getElementsByClassName('box')[0];
+				var oDd = oBox.getElementsByTagName('dd')[0];
+				var aImg = oDd.getElementsByTagName('img');
+				var oEm = oBox.getElementsByTagName('em')[0];
+				var oInfo = document.getElementById('info');
+				var marks = -1;
+				var arrText = ['特别不好','不好','差不多','优秀','非常好']
+				function selcetStar(index) {
+					for(var i = 0; i < aImg.length; i++) {
+						if(index < 2) {
+							if(i <= index) {
+								aImg[i].src = 'img/3.jpg'
+							} else {
+								aImg[i].src = 'img/1.jpg'
+							}
+						} else {
+							if(i <= index) {
+								aImg[i].src = 'img/2.jpg'
+							} else {
+								aImg[i].src = 'img/1.jpg'
+							}
+						}
+					}
+					oEm.innerHTML = arrText[index]
+				}
+				for(var i = 0; i < aImg.length; i++) {
+					aImg[i].index = i;
+					aImg[i].onmouseenter = function() {
+						selcetStar(this.index)
+					}
+					aImg[i].onclick = function() {
+						selcetStar(this.index);
+						marks = this.index;
+					}
+				}
+				oDd.onmouseenter = function(){
+					oInfo.style.display = 'none';
+					oEm.innerHTML = '初始化';
+				};
+				oDd.onmouseleave = function(){
+					if(marks == -1){
+						oInfo.style.display = 'block';
+						selcetStar(-1)
+					}else{
+						selcetStar(marks);
+						oEm.innerHTML = arrText[marks]
+					}
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="box">
+			<dl>
+				<dt><span>*</span>总体评分：</dt>
+				<dd>
+					<img src="img/1.jpg" />
+					<img src="img/1.jpg" />
+					<img src="img/1.jpg" />
+					<img src="img/1.jpg" />
+					<img src="img/1.jpg" />
+				</dd>
+				<em id="pos">初始化</em>
+				<div id="info">提示功能，此处没图片</div>
+			</dl>
+		</div>
+	</body>
+
+</html>

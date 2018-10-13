@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 600px;
+        }
+        div{
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            bottom: 0;
+            background: #0ff;;
+        }
+        span{
+            display: inline-block;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            position: absolute;
+            left: 35px;
+            background: red;
+        }
+    </style>
+    <script>
+        document.onkeydown = function(ev){
+            var oDiv = document.getElementsByTagName("div")[0];
+            var oEvent = ev||event;
+            if(oEvent.keyCode ==37){
+                oDiv.style.left = oDiv.offsetLeft - 10 +"px";
+            }
+            if(oEvent.keyCode ==39){
+                oDiv.style.left = oDiv.offsetLeft + 10 +"px";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <span></span>
+    </div>
+</body>
+</html>
