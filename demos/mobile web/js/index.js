@@ -272,9 +272,9 @@ document.addEventListener('touchmove', function (ev) {
         ev.preventDefault();
     }
 }, { passive: false })
+/*  */
 
-
-/-- ==================================================  评论列表  ======================================================== --/ 
+/*-- ==================================================  评论列表  ======================================================== --*/ 
 function EvaluationList(){
     this.evaluation = document.getElementsByClassName('evaluation');
     this.tpage = document.getElementsByClassName('tpage');
